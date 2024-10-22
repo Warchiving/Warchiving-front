@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-export default function MainScreen() {
+export default function HallPriceScreen() {
   return (
     <View style={styles.container}>
-      <Text>Main Screen</Text>
+      <Text>This is the HallPriceScreen</Text>
     </View>
   );
 }
