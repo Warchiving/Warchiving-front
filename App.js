@@ -1,20 +1,39 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import MainScreen from './src/MainScreen';
+import LikeScreen from './src/LikeScreen';
+import MypageScreen from './src/MypageScreen';
+
+const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Tab.Navigator>
+      <Tab.Screen
+          name="Main"
+          component={MainScreen}
+          options={{ 
+            tabBarLabel: '홈',  // Change the label to 'Home'
+            headerShown: false    // Hides the top bar for MainScreen
+          }}  
+        />
+        <Tab.Screen 
+        name="Likes" 
+        component={LikeScreen}
+        options={{ 
+          tabBarLabel: '찜',  // Change the label to 'Home'
+          headerShown: false    // Hides the top bar for MainScreen
+        }}   />
+        <Tab.Screen 
+        name="My Page" 
+        component={MypageScreen}
+        options={{ 
+          tabBarLabel: '마이페이지',  // Change the label to 'Home'
+          headerShown: false    // Hides the top bar for MainScreen
+        }} />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
