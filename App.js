@@ -16,6 +16,26 @@ import HallTagsScreen from './src/screens/HallTagsScreen';
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
+function HomeStackNavigator() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen 
+        name="Main" 
+        component={MainScreen} 
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen 
+        name="HallList" 
+        component={HallListScreen} 
+        options={{ 
+          headerShown: true,
+          title: '웨딩 홀 알아보기', // 원하는 상단바 이름
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
+
 function TabNavigator() {
   return (
     <Tab.Navigator>
@@ -29,7 +49,7 @@ function TabNavigator() {
       />
       <Tab.Screen
         name="Main"
-        component={MainScreen}
+        component={HomeStackNavigator}
         options={{
           tabBarLabel: '홈',
           headerShown: false
