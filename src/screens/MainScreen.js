@@ -19,7 +19,7 @@ export default function MainScreen({ navigation }) {
     { image: require('../../assets/Folder.png'), text: '파티룸', screen: 'HallPrice' },
     { image: require('../../assets/Folder.png'), text: '레스토랑', screen: 'HallPrice' },
     { image: require('../../assets/Folder.png'), text: '카페', screen: 'HallPrice' },
-    { image: require('../../assets/Folder.png'), text: '미팅룸', screen: 'HallPrice' },
+    { image: require('../../assets/Folder.png'), text: '미팅룸', screen: 'HallList' },
   ];
 
   const Hallimages = [
