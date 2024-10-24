@@ -62,7 +62,14 @@ export default function App() {
         <Stack.Screen
           name="HallPrice"
           component={HallPriceScreen}  // 새 화면을 위한 컴포넌트
-          options={{ headerShown: true }}  // 필요에 따라 상단바를 숨기거나 보이게 설정 가능
+          options={({ navigation }) => ({
+            headerTitle: '웨딩홀 알아보기',
+            headerLeft: () => (
+              <TouchableOpacity onPress={() => navigation.goBack()}>
+                <Image source={require('./assets/left.png')} style={{ height: 24, width: 24, marginLeft:10, }} />
+              </TouchableOpacity>
+            ),
+          })} // 필요에 따라 상단바를 숨기거나 보이게 설정 가능
         />
 
         <Stack.Screen
@@ -75,7 +82,7 @@ export default function App() {
                 <Image source={require('./assets/left.png')} style={{ height: 24, width: 24, marginLeft:10, }} />
               </TouchableOpacity>
             ),
-          })} // 필요에 따라 상단바를 숨기거나 보이게 설정 가능
+          })}
         />
 
 
