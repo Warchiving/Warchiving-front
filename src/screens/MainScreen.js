@@ -15,11 +15,11 @@ export default function MainScreen({ navigation }) {
   };
 
   const categories = [
-    { image: require('../../assets/Folder.png'), text: '웨딩홀', screen: 'HallPrice' },
-    { image: require('../../assets/Folder.png'), text: '파티룸', screen: 'HallPrice' },
-    { image: require('../../assets/Folder.png'), text: '레스토랑', screen: 'HallPrice' },
-    { image: require('../../assets/Folder.png'), text: '카페', screen: 'HallPrice' },
-    { image: require('../../assets/Folder.png'), text: '미팅룸', screen: 'HallList' },
+    { image: require('../../assets/Folder.png'), text: '전체', screen: 'HallPrice' },
+    { image: require('../../assets/Folder.png'), text: '스튜디오', screen: 'HallPrice' },
+    { image: require('../../assets/Folder.png'), text: '웨딩홀', screen: 'HallTags' },
+    { image: require('../../assets/Folder.png'), text: '드레스', screen: 'HallPrice' },
+    { image: require('../../assets/Folder.png'), text: '메이크업', screen: 'HallList' },
   ];
 
   const Hallimages = [
@@ -61,13 +61,26 @@ export default function MainScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
+      <View style={{ padding: 10, marginTop: 60, flexDirection: 'row', alignItems: 'center' }}>
+        {/* 왼쪽 빈 공간 */}
+        <View style={{ flex: 1 }} />
+
+        {/* 로고 중앙 정렬 */}
+        <Image source={require('../../assets/MainLogo.png')} style={styles.MainLogo} />
+
+        {/* 오른쪽 아이콘들 */}
+        <View style={{ flexDirection: 'row', flex: 1, justifyContent: 'flex-end' }}>
+          <Image source={require('../../assets/Basket.png')} style={styles.BasketImg} />
+          <Image source={require('../../assets/bell.png')} style={styles.bellImg} />
+        </View>
+      </View>
+
       <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={{ marginTop: 40, marginBottom: 30, }} />
 
         <View style={{ alignItems: 'center', padding: 15, }}>
           <SearchBar placeholder="업체를 검색해보세요" onSearch={onSearch} />
         </View>
-        
+
         {/* 메인 사진 3개 스와이퍼 */}
         <Swiper
           style={styles.wrapper}
@@ -90,6 +103,9 @@ export default function MainScreen({ navigation }) {
           ))}
         </Swiper>
 
+        <Text style={{ fontWeight: 700, marginLeft: 20, }}>나에게 맞는 스드메홀은?</Text>
+
+
         {/* 카테고리 */}
         <View style={styles.category}>
           {categories.map((category, index) => (
@@ -99,7 +115,7 @@ export default function MainScreen({ navigation }) {
               onPress={() => navigation.navigate(category.screen)}>
 
               <Image source={category.image} style={styles.categoryImg} />
-              <Text>{category.text}</Text>
+              <Text style={styles.categroyText}>{category.text}</Text>
 
             </TouchableOpacity>
           ))}
@@ -138,12 +154,10 @@ export default function MainScreen({ navigation }) {
           </ScrollView>
         </View>
 
-        <View style={{ marginBottom: 50, }} />
+        <View style={{ marginBottom: 200, }} />
 
 
 
-
-        {/* <CustomButton title="Click Me" onPress={() => alert('Button Pressed!')} /> */}
       </ScrollView>
     </View>
   );
@@ -158,6 +172,19 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
   },
+  MainLogo: {
+    width: 50,
+    height: 35,
+  },
+  BasketImg: {
+    width: 30,
+    height: 30,
+  },
+  bellImg: {
+    width: 25,
+    height: 25,
+    marginTop: 3,
+  },
   categoryContainer: {
     alignItems: 'center',
     padding: 5,
@@ -166,6 +193,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  categroyText: {
+    marginTop: 6,
+    fontWeight: 700,
   },
   Imglist: {
     flexDirection: 'row',
@@ -202,7 +233,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     margin: 10,
   },
-  bannertextContainer:{
+  bannertextContainer: {
     position: 'absolute',  // 텍스트를 이미지 위에 배치
     bottom: 20,  // 텍스트를 이미지 하단에 배치
     left: 20,
