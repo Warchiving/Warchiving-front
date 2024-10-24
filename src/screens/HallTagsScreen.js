@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, FlatList, Image, Dimensions }
 import CustomButton from '../components/CustomButton';  // 버튼 컴포넌트 불러오기
 import CustomButtonSkip from '../components/CustomButtonSkip';  // 버튼 컴포넌트 불러오기
 import ProgressBar from '../components/ProgressBar';  // 버튼 컴포넌트 불러오기
+import colors from '../components/colors';
 
 const screenWidth = Dimensions.get('window').width;  // Screen width for calculating item width
 
@@ -52,10 +53,10 @@ export default function HallTagsScreen({navigation}) {
                     source={item.image}
                     style={[
                         styles.tagImage,
-                        isSelected ? { tintColor: 'white' } : {},  // Change image color when selected
+                        isSelected ? { tintColor: colors.Pink900 } : {},  // Change image color when selected
                     ]}
                 />
-                <Text style={[styles.tagText, isSelected ? { color: 'white' } : {}]}>{item.label}</Text>
+                <Text style={[styles.tagText, isSelected ? { color: '#666666' } : {}]}>{item.label}</Text>
             </TouchableOpacity>
         );
     };
@@ -85,7 +86,7 @@ export default function HallTagsScreen({navigation}) {
             {/* 하단 버튼 */}
             <View style={{ alignItems: 'center' }}>
                 <CustomButton title="다음" onPress={() => navigation.navigate('HallPrice')} />
-                <CustomButtonSkip title="건너뛰기" onPress={() => alert('Button Pressed!')} />
+                <CustomButtonSkip title="건너뛰기" onPress={() => navigation.navigate('HallPrice')} />
             </View>
 
             <View style={{ marginBottom: 10 }} />
@@ -116,7 +117,7 @@ const styles = StyleSheet.create({
     },
     tagButton: {
         width: 108,
-        height: 100,
+        height: 120,
         margin: 5,
         padding: 10,
         backgroundColor: '#fff',
@@ -130,12 +131,13 @@ const styles = StyleSheet.create({
         marginLeft: 5,     // Remove side margins for full-width button
     },
     selectedButton: {
-        backgroundColor: '#4CAF50',  // Change background color when selected
-        borderColor: '#388E3C',      // Change border color when selected
+        backgroundColor: colors.Pink200,  // Change background color when selected
+        borderColor: colors.Pink700,      // Change border color when selected
     },
     tagImage: {
-        width: 45,   // Adjust size as necessary
-        height: 45,
+        marginTop:10,
+        width: 60,   // Adjust size as necessary
+        height: 60,
         marginBottom: 10,
     },
     tagText: {
