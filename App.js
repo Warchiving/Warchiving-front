@@ -6,6 +6,7 @@ import MainScreen from './src/screens/MainScreen';
 import LikeScreen from './src/screens/LikeScreen';
 import MypageScreen from './src/screens/MypageScreen';
 import HallPriceScreen from './src/screens/HallPriceScreen';  // 새로운 화면 (탭 없는 화면)
+import HallListScreen from './src/screens/HallListScreen';  // 새로운 화면 (탭 없는 화면)
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -58,6 +59,14 @@ export default function App() {
           component={HallPriceScreen}  // 새 화면을 위한 컴포넌트
           options={{ headerShown: true }}  // 필요에 따라 상단바를 숨기거나 보이게 설정 가능
         />
+
+          {/* 바텀탭 없이 표시될 새로운 화면 */}
+          <Stack.Screen 
+          name="HallList" 
+          component={HallListScreen}  // 새 화면을 위한 컴포넌트
+          options={{ headerShown: true }}  // 필요에 따라 상단바를 숨기거나 보이게 설정 가능
+        />
+
       </Stack.Navigator>
     </NavigationContainer>
   );
