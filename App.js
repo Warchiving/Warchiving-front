@@ -12,6 +12,8 @@ import MypageScreen from './src/screens/MypageScreen';
 import HallPriceScreen from './src/screens/HallPriceScreen';  // 새로운 화면 (탭 없는 화면)
 import HallListScreen from './src/screens/HallListScreen';  // 새로운 화면 (탭 없는 화면)
 import HallTagsScreen from './src/screens/HallTagsScreen';
+import HallGuarantorScreen from './src/screens/HallGuarantorScreen'
+import HallLoadingScreen from './src/screens/HallLoadingScreen';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -24,14 +26,18 @@ function HomeStackNavigator() {
         component={MainScreen} 
         options={{ headerShown: false }}
       />
-      <Stack.Screen 
-        name="HallList" 
-        component={HallListScreen} 
-        options={{ 
-          headerShown: true,
-          title: '웨딩 홀 알아보기', // 원하는 상단바 이름
-        }}
-      />
+      <Stack.Screen
+          name="HallList"
+          component={HallListScreen}  // 새 화면을 위한 컴포넌트
+          options={({ navigation }) => ({
+            headerTitle: '웨딩홀 알아보기',
+            headerLeft: () => (
+              <TouchableOpacity onPress={() => navigation.goBack()}>
+                <Image source={require('./assets/left.png')} style={{ height: 24, width: 24, marginLeft:10, }} />
+              </TouchableOpacity>
+            ),
+          })} // 필요에 따라 상단바를 숨기거나 보이게 설정 가능
+        />
     </Stack.Navigator>
   );
 }
@@ -86,7 +92,7 @@ export default function App() {
             headerTitle: '웨딩홀 알아보기',
             headerLeft: () => (
               <TouchableOpacity onPress={() => navigation.goBack()}>
-                <Image source={require('./assets/left.png')} style={{ height: 24, width: 24, marginLeft:10, }} />
+                <Image source={require('./assets/left.png')} style={{ height: 24, width: 24, marginLeft: 10, }} />
               </TouchableOpacity>
             ),
           })} // 필요에 따라 상단바를 숨기거나 보이게 설정 가능
@@ -99,18 +105,36 @@ export default function App() {
             headerTitle: '웨딩홀 알아보기',
             headerLeft: () => (
               <TouchableOpacity onPress={() => navigation.goBack()}>
-                <Image source={require('./assets/left.png')} style={{ height: 24, width: 24, marginLeft:10, }} />
+                <Image source={require('./assets/left.png')} style={{ height: 24, width: 24, marginLeft: 10, }} />
               </TouchableOpacity>
             ),
           })}
         />
 
-
-        {/* 바텀탭 없이 표시될 새로운 화면 */}
         <Stack.Screen
-          name="HallList"
-          component={HallListScreen}  // 새 화면을 위한 컴포넌트
-          options={{ headerShown: true }}  // 필요에 따라 상단바를 숨기거나 보이게 설정 가능
+          name="HallGuarantor"
+          component={HallGuarantorScreen}  // 새 화면을 위한 컴포넌트
+          options={({ navigation }) => ({
+            headerTitle: '웨딩홀 알아보기',
+            headerLeft: () => (
+              <TouchableOpacity onPress={() => navigation.goBack()}>
+                <Image source={require('./assets/left.png')} style={{ height: 24, width: 24, marginLeft: 10, }} />
+              </TouchableOpacity>
+            ),
+          })}
+        />
+
+        <Stack.Screen
+          name="HallLoading"
+          component={HallLoadingScreen}  // 새 화면을 위한 컴포넌트
+          options={({ navigation }) => ({
+            headerTitle: '웨딩홀 알아보기',
+            headerLeft: () => (
+              <TouchableOpacity onPress={() => navigation.goBack()}>
+                <Image source={require('./assets/left.png')} style={{ height: 24, width: 24, marginLeft: 10, }} />
+              </TouchableOpacity>
+            ),
+          })}
         />
 
       </Stack.Navigator>
