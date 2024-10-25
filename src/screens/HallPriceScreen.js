@@ -60,9 +60,9 @@ export default function HallPriceScreen({navigation}) {
       <Image source={require('../../assets/HallPriceImg.png')} style={styles.hallPriceImg} />
 
       {/* 하단 버튼 */}
-      <View style={{ alignItems: 'center', marginTop:60, }}>
-        <CustomButton title="다음" onPress={() => navigation.navigate('HallPrice')} />
-        <CustomButtonSkip title="건너뛰기" onPress={() => navigation.navigate('HallPrice')} />
+      <View style={{ alignItems: 'center', marginTop:90, }}>
+        <CustomButton title="다음" onPress={() => navigation.navigate('HallGuarantor')} />
+        <CustomButtonSkip title="건너뛰기" onPress={() => navigation.navigate('HallGuarantor')} />
       </View>
     </View>
   );
