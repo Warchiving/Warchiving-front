@@ -67,7 +67,7 @@ export default function MainScreen({ navigation }) {
         <View style={{ flex: 1 }} />
 
         {/* 로고 중앙 정렬 */}
-        <Image source={require('../../assets/MainLogo.png')} style={styles.MainLogo} />
+        <Image source={require('../../assets/MainScreenLogo.png')} style={styles.MainLogo} />
 
         {/* 오른쪽 아이콘들 */}
         <View style={{ flexDirection: 'row', flex: 1, justifyContent: 'flex-end' }}>
