@@ -79,9 +79,12 @@ export default function HallDetailScreen({ route, navigation }) {
       {/* 가격과 예약 버튼을 한 줄로 배치 */}
       <View style={styles.footer}>
         <Text style={styles.footerPrice}>{hall.price}</Text>
-        <TouchableOpacity style={styles.bookButton}>
-          <Text style={styles.bookText}>예약 선택</Text>
-        </TouchableOpacity>
+        <TouchableOpacity 
+      style={styles.bookButton}
+      onPress={() => navigation.navigate('Reservation', { hall })}
+      >
+        <Text style={styles.bookText}>예약 선택</Text>
+      </TouchableOpacity>
       </View>
       
     </View>
