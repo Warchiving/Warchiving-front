@@ -1,27 +1,26 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import colors from '../components/colors';
 
-// 상단 탭에 연결될 화면들
 const ProductsScreen = () => {
   const [activeTab, setActiveTab] = useState('찜한 상품');
 
   return (
-    <View style={styles.container}>
-      {/* 하위 버튼 탭 */}
-      <View style={styles.tabContainer}>
+    <View style={styles.tabContainer}>
+      <View style={styles.bottomTabContainer}>
         <TouchableOpacity
-          style={[styles.tabButton, activeTab === '찜한 상품' ? styles.activeTab : {}]}
+          style={[styles.bottomTabButton, activeTab === '찜한 상품' ? styles.activeBottomTab : {}]}
           onPress={() => setActiveTab('찜한 상품')}
         >
-          <Text style={activeTab === '찜한 상품' ? styles.activeTabText : styles.inactiveTabText}>
+          <Text style={activeTab === '찜한 상품' ? styles.activeBottomTabText : styles.inactiveTabText}>
             찜한 상품
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
-          style={[styles.tabButton, activeTab === '나의 아카이브' ? styles.activeTab : {}]}
+          style={[styles.bottomTabButton, activeTab === '나의 아카이브' ? styles.activeBottomTab : {}]}
           onPress={() => setActiveTab('나의 아카이브')}
         >
-          <Text style={activeTab === '나의 아카이브' ? styles.activeTabText : styles.inactiveTabText}>
+          <Text style={activeTab === '나의 아카이브' ? styles.activeBottomTabText : styles.inactiveTabText}>
             나의 아카이브
           </Text>
         </TouchableOpacity>
@@ -82,42 +81,60 @@ const TopTabsNavigator = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: colors.White,
   },
+  // 상단 탭 스타일
   topTabContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     paddingVertical: 10,
     borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
+    borderBottomColor: '#ffffff',
   },
   topTabButton: {
-    padding: 10,
-    borderRadius: 5,
+    flex: 1, // 탭 버튼을 균등하게 나눔
+    alignItems: 'center',
+    paddingVertical: 10,
   },
   activeTopTab: {
     borderBottomWidth: 2,
     borderBottomColor: 'black',
-  },
-  tabContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    paddingVertical: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
-  },
-  tabButton: {
-    padding: 10,
-    borderRadius: 5,
-  },
-  activeTab: {
-    backgroundColor: 'black',
+    width: '50%', // 각 탭의 절반을 차지하도록 설정
   },
   activeTabText: {
-    color: 'white',
+    color: colors.Black,
     fontWeight: 'bold',
   },
   inactiveTabText: {
     color: 'gray',
+  },
+
+  // 하단 탭 스타일
+  tabContainer: {
+    flex: 1,
+    backgroundColor: colors.White,
+  },
+  bottomTabContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    paddingVertical: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: '#ffffff',
+  },
+  bottomTabButton: {
+    width: 80, 
+    height: 30,
+    alignItems: 'center', // 버튼 텍스트 가운데 정렬
+    justifyContent: 'center', // 버튼 텍스트 세로 가운데 정렬
+    marginLeft: 10, // 버튼 사이 간격 추가
+    borderRadius: 5,
+  },
+  activeBottomTab: {
+    backgroundColor: 'black',
+  },
+  activeBottomTabText: {
+    color: colors.White,
+    fontWeight: 'bold',
   },
   content: {
     flex: 1,

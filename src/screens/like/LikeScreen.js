@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import TopTabsNavigator from '../navigators/TopTabsNavigator';
+import TopTabsNavigator from '../../navigators/TopTabsNavigator';
 
 const LikeScreen = () => {
   return (
