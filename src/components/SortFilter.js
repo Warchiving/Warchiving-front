@@ -52,7 +52,10 @@ const SortFilter = ({ onSortChange, onFilterChange }) => {
     <View style={styles.container}>
       {/* 필터 적용 버튼 */}
       <TouchableOpacity
-        style={[styles.filterButton, isFilterApplied && styles.filterApplied]}
+        style={[
+          styles.filterButton,
+          isFilterApplied ? styles.filterApplied : styles.filterNotApplied, // 필터 적용 상태에 따른 색상 변경
+        ]}
         onPress={handleFilterPress} // 필터 상태 변경 시 호출
       >
         <Text style={styles.filterButtonText}>
@@ -113,13 +116,15 @@ const styles = StyleSheet.create({
   filterButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: colors.Black,
     paddingVertical: 8,
     paddingHorizontal: 12,
     borderRadius: 10,
   },
   filterApplied: {
-    backgroundColor: '#000',
+    backgroundColor: colors.Black,  // 필터가 적용된 경우 검정색 배경
+  },
+  filterNotApplied: {
+    backgroundColor: colors.Grey600,  // 필터가 적용되지 않은 경우 회색 배경
   },
   filterButtonText: {
     color: '#fff',
