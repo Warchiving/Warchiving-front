@@ -1,11 +1,11 @@
 import React from 'react';
 import { View } from 'react-native';
-//import TopTabsNavigator from './path/to/TopTabsNavigator';
+import TopTabsNavigator from '../navigators/TopTabsNavigator';
 
 const LikeScreen = () => {
   return (
     <View style={{ flex: 1 }}>
-      {/* <TopTabsNavigator /> */}
+      <TopTabsNavigator />
     </View>
   );
 };
