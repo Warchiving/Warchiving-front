@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
     },
     container2: {
         padding: 20,
-        backgroundColor: '#F8F8F8'
+        backgroundColor: '#FFFFFF'
     },
     headerText: {
         fontSize: 20,
