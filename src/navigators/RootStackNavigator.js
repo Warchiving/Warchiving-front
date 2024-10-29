@@ -30,7 +30,6 @@ const RootStackNavigator = () => (
       options={{ headerShown: false }}
     />
     
-    {/* HallScreensNavigator의 각 Screen을 RootStackNavigator에 직접 추가 */}
     <Stack.Screen
       name="HallPrice"
       component={HallPriceScreen}

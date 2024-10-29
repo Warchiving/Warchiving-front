@@ -14,10 +14,8 @@ const TabNavigator = () => (
       component={LikeScreen}
       options={{
         tabBarLabel: '찜',
-        headerShown: false,
-        // tabBarIcon: ({ color, size }) => (
-        //   <Image source={require('../../assets/ic_todo.png')} style={{ width: size, height: size, tintColor: color }} />
-        // ),
+        headerShown: true,
+        headerTitle: '찜',
       }}
     />
     <Tab.Screen
@@ -32,16 +30,14 @@ const TabNavigator = () => (
       }}
     />
     <Tab.Screen
-      name="MyPage"
-      component={MypageScreen}
-      options={{
-        tabBarLabel: '마이페이지',
-        headerShown: false,
-        // tabBarIcon: ({ color, size }) => (
-        //   <Image source={require('../../assets/ic_mypage.png')} style={{ width: size, height: size, tintColor: color }} />
-        // ),
-      }}
-    />
+    name="MyPage"
+    component={MypageScreen}
+    options={{
+      tabBarLabel: '마이페이지',
+      headerShown: true,
+      headerTitle: '마이페이지',
+    }}
+  />
   </Tab.Navigator>
 );
 
