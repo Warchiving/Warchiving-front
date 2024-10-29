@@ -121,7 +121,7 @@ export default function HallListScreen({ navigation }) {
       <FlatList
         data={hallListState}
         keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => <HallItem hall={item} />}
+        renderItem={({ item }) => <HallItem hall={item} navigation={navigation} />} // navigation 전달
         contentContainerStyle={styles.listContainer}
         showsVerticalScrollIndicator={false}
       />

@@ -1,9 +1,10 @@
 // components/HallItem.js
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import colors from './colors';
 
-const HallItem = ({ hall }) => (
-  <View style={styles.itemContainer}>
+const HallItem = ({ hall, navigation }) => (
+  <TouchableOpacity onPress={() => navigation.navigate('HallDetail', { hall })} style={styles.itemContainer}>
     <Image source={hall.image} style={styles.hallImage} />
     <View style={styles.itemInfo}>
       <View style={styles.tagContainer}>
@@ -25,7 +26,7 @@ const HallItem = ({ hall }) => (
         </Text>
       </View>
     </View>
-  </View>
+  </TouchableOpacity>
 );
 
 const styles = StyleSheet.create({
@@ -52,7 +53,7 @@ const styles = StyleSheet.create({
   },
   halltag: {
     borderWidth: 1,
-    borderColor: '#f28b82',
+    borderColor: colors.Pink700,
     borderRadius: 15,
     paddingHorizontal: 5,
     paddingVertical: 2,
@@ -61,17 +62,19 @@ const styles = StyleSheet.create({
   },
   halltagText: {
     fontSize: 10,
-    color: '#555',
+    color: colors.Grey600,
   },
   title: {
     fontSize: 16,
     fontWeight: 'bold',
     marginBottom: 5,
+    color: colors.Black,
   },
   subTitle: {
     fontSize: 14,
     color: 'grey',
     marginBottom: 40,
+    color: '#33363F',
   },
   priceContainer: {
     flexDirection: 'row',
@@ -79,12 +82,12 @@ const styles = StyleSheet.create({
   },
   priceBold: {
     fontSize: 18,
-    color: 'black',
+    color: colors.Black,
     fontWeight: 'bold',
   },
   priceSmall: {
     fontSize: 12,
-    color: 'black',
+    color: colors.Black,
     marginLeft: 4,
   },
 });
