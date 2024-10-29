@@ -1,18 +1,13 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View } from 'react-native';
+//import TopTabsNavigator from './path/to/TopTabsNavigator';
 
-export default function LikeScreen() {
+const LikeScreen = () => {
   return (
-    <View style={styles.container}>
-      <Text>Like Screen</Text>
+    <View style={{ flex: 1 }}>
+      {/* <TopTabsNavigator /> */}
     </View>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
+export default LikeScreen;
