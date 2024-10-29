@@ -4,6 +4,7 @@ const colors = {
   Pink900:'#FD7372',
   Black:'#222222',
   Grey600:'#777777',
+  White:'#FFFFFF',
 };
 
 export default colors;

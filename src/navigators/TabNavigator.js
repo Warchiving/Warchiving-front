@@ -1,7 +1,7 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeStackNavigator from './HomeStackNavigator';
-import LikeScreen from '../screens/LikeScreen';
+import LikeScreen from '../screens/like/LikeScreen';
 import MypageScreen from '../screens/MypageScreen';
 import { Image } from 'react-native';
 
