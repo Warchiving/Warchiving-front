@@ -41,23 +41,23 @@ export default function ReservationScreen({ route, navigation }) {
                     }}
                     onDayPress={onDayPress}
                     markedDates={{
-                        [selectedDate]: { selected: true, selectedColor: '#00adf5', selectedTextColor: 'black' },
+                        [selectedDate]: { selected: true, selectedColor: '#ff6b6b', selectedTextColor: 'white' },
                     }}
                     theme={{
                         backgroundColor: 'white',
                         calendarBackground: 'white',
                         textSectionTitleColor: 'grey', // Color of weekday titles (월, 화, 수, etc.)
-                        selectedDayBackgroundColor: '#FD7372',
                         selectedDayTextColor: 'black',
-                        todayTextColor: '#FD7372',
                         dayTextColor: 'black',
                         textDisabledColor: 'lightgrey',  // Disabled days color (e.g., days outside current month)
-                        arrowColor: 'black',
                         monthTextColor: 'black',
                         textMonthFontWeight: 'bold',
-                        textDayFontSize: 13,
-                        textMonthFontSize: 13,
+                        textDayFontSize: 14,
+                        textMonthFontSize: 14,
                         textDayHeaderFontSize: 10,
+                        selectedDayBackgroundColor: '#ff6b6b',
+                        arrowColor: 'black',
+                        todayTextColor: '#ff6b6b',
                     }}
                 />
 
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
     },
     container2: {
         padding: 20,
-        backgroundColor: '#F8F8F8'
+        backgroundColor: '#FFFFFF'
     },
     headerText: {
         fontSize: 20,
@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
     hallInfoContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        padding: 15,
+        padding: 12,
     },
     hallImage: {
         width: 50,
