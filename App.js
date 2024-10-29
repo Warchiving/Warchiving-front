@@ -3,9 +3,12 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import { TouchableOpacity, Image, Text } from 'react-native';
+
 // import colors from '../../config/colors';
 // import { fonts } from '../../config/fonts';
 
+import SplashScreen from './src/screens/SplashScreen';  // 스플래시 화면 import
+import LoginScreen from './src/screens/LoginScreen';
 import MainScreen from './src/screens/MainScreen';
 import LikeScreen from './src/screens/LikeScreen';
 import MypageScreen from './src/screens/MypageScreen';
@@ -21,23 +24,23 @@ const Stack = createStackNavigator();
 function HomeStackNavigator() {
   return (
     <Stack.Navigator>
-      <Stack.Screen 
-        name="Main" 
-        component={MainScreen} 
+      <Stack.Screen
+        name="Main"
+        component={MainScreen}
         options={{ headerShown: false }}
       />
       <Stack.Screen
-          name="HallList"
-          component={HallListScreen}  // 새 화면을 위한 컴포넌트
-          options={({ navigation }) => ({
-            headerTitle: '웨딩홀 알아보기',
-            headerLeft: () => (
-              <TouchableOpacity onPress={() => navigation.goBack()}>
-                <Image source={require('./assets/left.png')} style={{ height: 24, width: 24, marginLeft:10, }} />
-              </TouchableOpacity>
-            ),
-          })} // 필요에 따라 상단바를 숨기거나 보이게 설정 가능
-        />
+        name="HallList"
+        component={HallListScreen}  // 새 화면을 위한 컴포넌트
+        options={({ navigation }) => ({
+          headerTitle: '웨딩홀 알아보기',
+          headerLeft: () => (
+            <TouchableOpacity onPress={() => navigation.goBack()}>
+              <Image source={require('./assets/left.png')} style={{ height: 24, width: 24, marginLeft: 10, }} />
+            </TouchableOpacity>
+          ),
+        })} // 필요에 따라 상단바를 숨기거나 보이게 설정 가능
+      />
     </Stack.Navigator>
   );
 }
@@ -54,7 +57,7 @@ function TabNavigator() {
         }}
       />
       <Tab.Screen
-        name="Main"
+        name="HomStack"
         component={HomeStackNavigator}
         options={{
           tabBarLabel: '홈',
@@ -76,7 +79,18 @@ function TabNavigator() {
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName="TabNavigator">
+      {/* 앱 실행 시 처음 표시되는 스플래시 화면 */}
+        <Stack.Screen
+          name="Splash"
+          component={SplashScreen}
+          options={{ headerShown: false }}  // 상단바 숨김
+        />
+        <Stack.Screen
+          name="Login"
+          component={LoginScreen}
+          options={{ headerShown: false }}  // 상단바 숨김
+        />
         {/* 바텀탭 네비게이션 */}
         <Stack.Screen
           name="TabNavigator"

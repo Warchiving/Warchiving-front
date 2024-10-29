@@ -4,6 +4,7 @@ import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView, Dimensions
 import CustomButton from '../components/CustomButton';  // 버튼 컴포넌트 불러오기
 import SearchBar from '../components/SearchBar';  // SearchBar 컴포넌트 불러오기
 import Swiper from 'react-native-swiper';
+import colors from '../components/colors';
 
 const { width } = Dimensions.get('window');
 
@@ -77,6 +78,7 @@ export default function MainScreen({ navigation }) {
 
       <ScrollView showsVerticalScrollIndicator={false}>
 
+        {/* 검색창 */}
         <View style={{ alignItems: 'center', padding: 15, }}>
           <SearchBar placeholder="업체를 검색해보세요" onSearch={onSearch} />
         </View>
@@ -102,9 +104,8 @@ export default function MainScreen({ navigation }) {
             </View>
           ))}
         </Swiper>
-
+        
         <Text style={{ fontWeight: 700, marginLeft: 20, }}>나에게 맞는 스드메홀은?</Text>
-
 
         {/* 카테고리 */}
         <View style={styles.category}>
@@ -120,10 +121,11 @@ export default function MainScreen({ navigation }) {
             </TouchableOpacity>
           ))}
         </View>
-
+        
+        {/* 홀 추천1 */}
         <View style={{ marginTop: 40 }}>
-          <Text style={{ marginLeft: 20, marginBottom: 10, }}>
-            <Text style={{ color: 'red', }}>#추가_비용_없는</Text> 메이크업 샵
+          <Text style={{ marginLeft: 20, marginBottom: 10, fontWeight:'600' }}>
+            <Text style={styles.HallText}>#추가_비용_없는</Text> 메이크업 샵
           </Text>
           <ScrollView style={styles.Imglist} horizontal={true} showsHorizontalScrollIndicator={false}>
             {Hallimages.map((img, index) => (
@@ -132,9 +134,10 @@ export default function MainScreen({ navigation }) {
           </ScrollView>
         </View>
 
+        {/* 홀 추천2 */}
         <View style={{ marginTop: 30 }}>
-          <Text style={{ marginLeft: 20, marginBottom: 10, }}>
-            <Text style={{ color: 'red', }}>#서비스가_좋은</Text> 드레스샵
+        <Text style={{ marginLeft: 20, marginBottom: 10, fontWeight:'600' }}>
+            <Text style={styles.HallText}>#서비스가_좋은</Text> 드레스샵
           </Text>
           <ScrollView style={styles.Imglist} horizontal={true} showsHorizontalScrollIndicator={false}>
             {Hallimages2.map((img, index) => (
@@ -143,9 +146,10 @@ export default function MainScreen({ navigation }) {
           </ScrollView>
         </View>
 
+        {/* 홀 추천3 */}
         <View style={{ marginTop: 30 }}>
-          <Text style={{ marginLeft: 20, marginBottom: 10, }}>
-            <Text style={{ color: 'red', }}>#서비스가_좋은</Text> 드레스샵
+        <Text style={{ marginLeft: 20, marginBottom: 10, fontWeight:'600' }}>
+            <Text style={styles.HallText}>#서비스가_좋은</Text> 드레스샵
           </Text>
           <ScrollView style={styles.Imglist} horizontal={true} showsHorizontalScrollIndicator={false}>
             {Hallimages2.map((img, index) => (
@@ -155,8 +159,6 @@ export default function MainScreen({ navigation }) {
         </View>
 
         <View style={{ marginBottom: 200, }} />
-
-
 
       </ScrollView>
     </View>
@@ -248,4 +250,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     marginTop: 5,
   },
+  HallText:{
+    color: colors.Pink900,
+  }
 });
