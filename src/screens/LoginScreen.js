@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import LoginButton from '../components/LoginButton';
 
-export default function LoginScreen() {
+export default function LoginScreen({navigation}) {
     return (
         <View style={styles.container}>
             
@@ -25,7 +25,8 @@ export default function LoginScreen() {
                 backgroundColor="#fff"
                 textColor="#333"
                 text="구글 계정으로 로그인"
-                onPress={() => alert('구글 로그인')}
+                style={styles.button}
+                onPress={() => navigation.navigate('TabNavigator')} 
             />
 
             {/* 애플 로그인 버튼 */}
@@ -34,7 +35,8 @@ export default function LoginScreen() {
                 backgroundColor="#000"
                 textColor="#fff"
                 text="애플 계정으로 로그인"
-                onPress={() => alert('애플 로그인')}
+                style={styles.button}
+                onPress={() => navigation.navigate('TabNavigator')} 
             />
         </View>
     );
@@ -44,21 +46,26 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
-        padding: 20,
+        padding: 30,
     },
     greeting: {
         fontSize: 20,
         marginBottom: 30,
         color: '#333',
+        marginTop:'35%'
     },
     highlight: {
         color: '#FF6B6B',
         fontWeight: 'bold',
     },
     image:{
-        width:550,
-        height:550,
+        width:380,
+        height:380,
         resizeMode:'contain',
-        alignSelf:'center'
+        alignSelf:'center',
+    },
+    button:{
+        justifyContent:'center',
+        alignItems:'center',  
     }
 });
