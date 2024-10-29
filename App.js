@@ -18,6 +18,7 @@ import HallTagsScreen from './src/screens/HallTagsScreen';
 import HallGuarantorScreen from './src/screens/HallGuarantorScreen'
 import HallLoadingScreen from './src/screens/HallLoadingScreen';
 import HallDetailScreen from './src/screens/HallDetailScreen';
+import ReservationScreen from './src/screens/ReservationScreen';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -81,7 +82,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="TabNavigator">
-      {/* 앱 실행 시 처음 표시되는 스플래시 화면 */}
+        {/* 앱 실행 시 처음 표시되는 스플래시 화면 */}
         <Stack.Screen
           name="Splash"
           component={SplashScreen}
@@ -157,6 +158,19 @@ export default function App() {
           component={HallDetailScreen}
           options={({ route, navigation }) => ({
             headerTitle: route.params.hall.name,
+            headerLeft: () => (
+              <TouchableOpacity onPress={() => navigation.goBack()}>
+                <Image source={require('./assets/left.png')} style={{ height: 24, width: 24, marginLeft: 10 }} />
+              </TouchableOpacity>
+            ),
+          })}
+        />
+
+        <Stack.Screen
+          name="Reservation"
+          component={ReservationScreen}
+          options={({ route, navigation }) => ({
+            headerTitle: '예약하기',
             headerLeft: () => (
               <TouchableOpacity onPress={() => navigation.goBack()}>
                 <Image source={require('./assets/left.png')} style={{ height: 24, width: 24, marginLeft: 10 }} />
