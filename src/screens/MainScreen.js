@@ -104,7 +104,7 @@ export default function MainScreen({ navigation }) {
             </View>
           ))}
         </Swiper>
-        
+
         <Text style={{ fontWeight: 700, marginLeft: 20, }}>나에게 맞는 스드메홀은?</Text>
 
         {/* 카테고리 */}
@@ -121,39 +121,66 @@ export default function MainScreen({ navigation }) {
             </TouchableOpacity>
           ))}
         </View>
-        
+
         {/* 홀 추천1 */}
         <View style={{ marginTop: 40 }}>
-          <Text style={{ marginLeft: 20, marginBottom: 10, fontWeight:'600' }}>
+          <Text style={{ marginLeft: 20, marginBottom: 10, fontWeight: '600' }}>
             <Text style={styles.HallText}>#추가_비용_없는</Text> 메이크업 샵
           </Text>
           <ScrollView style={styles.Imglist} horizontal={true} showsHorizontalScrollIndicator={false}>
             {Hallimages.map((img, index) => (
-              <Image key={index} source={img} style={[styles.Hallimage, index === 0 && { marginLeft: 20 }]} />
+              <View key={index} style={[styles.imageWrapper, index === 0 && { marginLeft: 20 }]}>
+                {/* Main Image */}
+                <Image source={img} style={styles.Hallimage} />
+
+                {/* Icons overlay */}
+                <View style={styles.iconContainer}>
+                  <Image source={require('../../assets/heart_icon.png')} style={styles.icon} />
+                  <Image source={require('../../assets/bag_icon.png')} style={[styles.icon,]} />
+                </View>
+              </View>
             ))}
           </ScrollView>
         </View>
 
         {/* 홀 추천2 */}
         <View style={{ marginTop: 30 }}>
-        <Text style={{ marginLeft: 20, marginBottom: 10, fontWeight:'600' }}>
+          <Text style={{ marginLeft: 20, marginBottom: 10, fontWeight: '600' }}>
             <Text style={styles.HallText}>#서비스가_좋은</Text> 드레스샵
           </Text>
           <ScrollView style={styles.Imglist} horizontal={true} showsHorizontalScrollIndicator={false}>
             {Hallimages2.map((img, index) => (
-              <Image key={index} source={img} style={[styles.Hallimage, index === 0 && { marginLeft: 20 }]} />
+              <View key={index} style={[styles.imageWrapper, index === 0 && { marginLeft: 20 }]}>
+              {/* Main Image */}
+              <Image source={img} style={styles.Hallimage} />
+
+              {/* Icons overlay */}
+              <View style={styles.iconContainer}>
+                <Image source={require('../../assets/heart_icon.png')} style={styles.icon} />
+                <Image source={require('../../assets/bag_icon.png')} style={styles.icon} />
+              </View>
+            </View>
             ))}
           </ScrollView>
         </View>
 
         {/* 홀 추천3 */}
         <View style={{ marginTop: 30 }}>
-        <Text style={{ marginLeft: 20, marginBottom: 10, fontWeight:'600' }}>
+          <Text style={{ marginLeft: 20, marginBottom: 10, fontWeight: '600' }}>
             <Text style={styles.HallText}>#서비스가_좋은</Text> 드레스샵
           </Text>
           <ScrollView style={styles.Imglist} horizontal={true} showsHorizontalScrollIndicator={false}>
             {Hallimages2.map((img, index) => (
-              <Image key={index} source={img} style={[styles.Hallimage, index === 0 && { marginLeft: 20 }]} />
+              <View key={index} style={[styles.imageWrapper, index === 0 && { marginLeft: 20 }]}>
+              {/* Main Image */}
+              <Image source={img} style={styles.Hallimage} />
+
+              {/* Icons overlay */}
+              <View style={styles.iconContainer}>
+                <Image source={require('../../assets/heart_icon.png')} style={styles.icon} />
+                <Image source={require('../../assets/bag_icon.png')} style={[styles.icon,]} />
+              </View>
+            </View>
             ))}
           </ScrollView>
         </View>
@@ -208,6 +235,7 @@ const styles = StyleSheet.create({
     height: 120,
     borderRadius: 7,
     marginHorizontal: 6,
+    backgroundColor: '#e0e0e0', // Placeholder color for image
   },
   wrapper: {
     height: 350,
@@ -250,7 +278,26 @@ const styles = StyleSheet.create({
     fontSize: 14,
     marginTop: 5,
   },
-  HallText:{
+  HallText: {
     color: colors.Pink900,
-  }
+  },
+  imageWrapper: {
+    position: 'relative',
+  },
+  Hallimage: {
+    width: 110,
+    height: 130,
+    borderRadius: 7,
+    marginRight:8,
+  },
+  iconContainer: {
+    position: 'absolute',
+    top: 5,
+    right: 80,
+    flexDirection: 'row',
+  },
+  icon: {
+    width: 16,
+    height: 16,
+  },
 });
