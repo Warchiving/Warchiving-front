@@ -20,8 +20,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 15,
     borderRadius: 10,
-    width: '80%',
-    marginBottom: 20,
+    marginBottom: 8,
+    borderColor:'#F1F1F1',
+    borderWidth:1,
   },
   logo: {
     width: 24,
