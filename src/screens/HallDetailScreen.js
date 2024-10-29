@@ -70,7 +70,10 @@ export default function HallDetailScreen({ route, navigation }) {
         </View>
       </ScrollView>
 
-      <TouchableOpacity style={styles.bookButton}>
+      <TouchableOpacity 
+      style={styles.bookButton}
+      onPress={() => navigation.navigate('Reservation', { hall })}
+      >
         <Text style={styles.bookText}>예약 선택</Text>
       </TouchableOpacity>
       
