@@ -17,6 +17,7 @@ import HallListScreen from './src/screens/HallListScreen';  // 새로운 화면 
 import HallTagsScreen from './src/screens/HallTagsScreen';
 import HallGuarantorScreen from './src/screens/HallGuarantorScreen'
 import HallLoadingScreen from './src/screens/HallLoadingScreen';
+import HallDetailScreen from './src/screens/HallDetailScreen';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -40,6 +41,18 @@ function HomeStackNavigator() {
             </TouchableOpacity>
           ),
         })} // 필요에 따라 상단바를 숨기거나 보이게 설정 가능
+      />
+       <Stack.Screen
+        name="HallDetail"
+        component={HallDetailScreen}
+        options={({ route, navigation }) => ({
+          headerTitle: route.params.hall.name, // 선택된 웨딩홀 이름을 상단에 표시
+          headerLeft: () => (
+            <TouchableOpacity onPress={() => navigation.goBack()}>
+              <Image source={require('./assets/left.png')} style={{ height: 24, width: 24, marginLeft:10 }} />
+            </TouchableOpacity>
+          ),
+        })}
       />
     </Stack.Navigator>
   );

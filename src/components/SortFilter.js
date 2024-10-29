@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Modal, FlatList, Animated, TouchableWithoutFeedback } from 'react-native';
+import colors from './colors';
 
 const SortFilter = ({ onSortChange, onFilterChange }) => {
   const [isFilterApplied, setIsFilterApplied] = useState(false); // 필터 상태 관리
@@ -112,10 +113,10 @@ const styles = StyleSheet.create({
   filterButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#444',
+    backgroundColor: colors.Black,
     paddingVertical: 8,
     paddingHorizontal: 12,
-    borderRadius: 5,
+    borderRadius: 10,
   },
   filterApplied: {
     backgroundColor: '#000',
@@ -125,13 +126,13 @@ const styles = StyleSheet.create({
   },
   sortButton: {
     borderWidth: 1,
-    borderColor: '#444',
+    borderColor: colors.Black,
     paddingVertical: 7,
     paddingHorizontal: 12,
-    borderRadius: 5,
+    borderRadius: 10,
   },
   sortButtonText: {
-    color: '#444',
+    color: colors.Black,
   },
   modalOverlay: {
     flex: 1,
@@ -140,8 +141,8 @@ const styles = StyleSheet.create({
   modalContainer: {
     backgroundColor: 'white',
     padding: 15,
-    borderTopLeftRadius: 15,
-    borderTopRightRadius: 15,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
     position: 'absolute',
     bottom: 0,
     width: '100%',
@@ -153,7 +154,7 @@ const styles = StyleSheet.create({
   },
   modalItemText: {
     fontSize: 16,
-    color: '#444',
+    color: colors.Black,
     textAlign: 'center',  // 텍스트를 중앙 정렬
     fontWeight: 'bold',   // 텍스트를 볼드체로 설정
   },

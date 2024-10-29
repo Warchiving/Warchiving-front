@@ -20,7 +20,7 @@ export default function MainScreen({ navigation }) {
     { image: require('../../assets/Folder.png'), text: '스튜디오', screen: 'HallPrice' },
     { image: require('../../assets/Folder.png'), text: '웨딩홀', screen: 'HallTags' },
     { image: require('../../assets/Folder.png'), text: '드레스', screen: 'HallPrice' },
-    { image: require('../../assets/Folder.png'), text: '메이크업', screen: 'HallList' },
+    { image: require('../../assets/Folder.png'), text: '메이크업', screen: 'HallPrice' },
   ];
 
   const Hallimages = [
