@@ -1,33 +1,53 @@
-// components/HallItem.js
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import colors from './colors';
+import heartIcon from '../../assets/heart.png';
+import fullHeartIcon from '../../assets/fullheart.png';
+import addIcon from '../../assets/add.png';
 
-const HallItem = ({ hall, navigation }) => (
-  <TouchableOpacity onPress={() => navigation.navigate('HallDetail', { hall })} style={styles.itemContainer}>
-    <Image source={hall.image} style={styles.hallImage} />
-    <View style={styles.itemInfo}>
-      <View style={styles.tagContainer}>
-        <View style={styles.halltag}>
-          <Text style={styles.halltagText}>{hall.halltag1}</Text>
-        </View>
-        <View style={styles.halltag}>
-          <Text style={styles.halltagText}>{hall.halltag2}</Text>
+const HallItem = ({ hall, navigation }) => {
+  const [isLiked, setIsLiked] = useState(false);
+
+  const toggleLike = () => {
+    setIsLiked(!isLiked);
+  };
+
+  return (
+    <TouchableOpacity onPress={() => navigation.navigate('HallDetail', { hall })} style={styles.itemContainer}>
+      <View style={styles.imageContainer}>
+        <Image source={hall.image} style={styles.hallImage} />
+        <View style={styles.iconOverlay}>
+          <TouchableOpacity onPress={toggleLike} style={styles.iconButton}>
+            <Image source={isLiked ? fullHeartIcon : heartIcon} style={styles.icon} />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.iconButton}>
+            <Image source={addIcon} style={styles.icon} />
+          </TouchableOpacity>
         </View>
       </View>
-      <Text style={styles.title}>{hall.name}</Text>
-      <Text style={styles.subTitle}>{hall.location}</Text>
-      <View style={styles.priceContainer}>
-        <Text style={styles.priceBold}>
-          {hall.price.split('원')[0]}원
-        </Text>
-        <Text style={styles.priceSmall}>
-          {hall.price.split('원')[1]}
-        </Text>
+      <View style={styles.itemInfo}>
+        <View style={styles.tagContainer}>
+          <View style={styles.halltag}>
+            <Text style={styles.halltagText}>{hall.halltag1}</Text>
+          </View>
+          <View style={styles.halltag}>
+            <Text style={styles.halltagText}>{hall.halltag2}</Text>
+          </View>
+        </View>
+        <Text style={styles.title}>{hall.name}</Text>
+        <Text style={styles.subTitle}>{hall.location}</Text>
+        <View style={styles.priceContainer}>
+          <Text style={styles.priceBold}>
+            {hall.price.split('원')[0]}원
+          </Text>
+          <Text style={styles.priceSmall}>
+            {hall.price.split('원')[1]}
+          </Text>
+        </View>
       </View>
-    </View>
-  </TouchableOpacity>
-);
+    </TouchableOpacity>
+  );
+};
 
 const styles = StyleSheet.create({
   itemContainer: {
@@ -36,16 +56,34 @@ const styles = StyleSheet.create({
     padding: 10,
     marginBottom: 15,
   },
+  imageContainer: {
+    position: 'relative',
+  },
   hallImage: {
     width: 110,
     height: 130,
     borderRadius: 10,
-    marginRight: 20,
+  },
+  iconOverlay: {
+    position: 'absolute',
+    top: 5,
+    right: 5,
+    flexDirection: 'row',
+  },
+  iconButton: {
+    marginTop: 3,
+    marginLeft: 3,
+    marginRight: 3,
+  },
+  icon: {
+    width: 20,
+    height: 20,
   },
   itemInfo: {
     flex: 1,
     justifyContent: 'flex-start',
     height: 130,
+    marginLeft: 20,
   },
   tagContainer: {
     flexDirection: 'row',
@@ -72,9 +110,8 @@ const styles = StyleSheet.create({
   },
   subTitle: {
     fontSize: 14,
-    color: 'grey',
-    marginBottom: 40,
     color: '#33363F',
+    marginBottom: 40,
   },
   priceContainer: {
     flexDirection: 'row',
