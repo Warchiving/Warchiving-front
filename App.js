@@ -42,18 +42,6 @@ function HomeStackNavigator() {
           ),
         })} // 필요에 따라 상단바를 숨기거나 보이게 설정 가능
       />
-       <Stack.Screen
-        name="HallDetail"
-        component={HallDetailScreen}
-        options={({ route, navigation }) => ({
-          headerTitle: route.params.hall.name, // 선택된 웨딩홀 이름을 상단에 표시
-          headerLeft: () => (
-            <TouchableOpacity onPress={() => navigation.goBack()}>
-              <Image source={require('./assets/left.png')} style={{ height: 24, width: 24, marginLeft:10 }} />
-            </TouchableOpacity>
-          ),
-        })}
-      />
     </Stack.Navigator>
   );
 }
@@ -159,6 +147,19 @@ export default function App() {
             headerLeft: () => (
               <TouchableOpacity onPress={() => navigation.goBack()}>
                 <Image source={require('./assets/left.png')} style={{ height: 24, width: 24, marginLeft: 10, }} />
+              </TouchableOpacity>
+            ),
+          })}
+        />
+
+        <Stack.Screen
+          name="HallDetail"
+          component={HallDetailScreen}
+          options={({ route, navigation }) => ({
+            headerTitle: route.params.hall.name,
+            headerLeft: () => (
+              <TouchableOpacity onPress={() => navigation.goBack()}>
+                <Image source={require('./assets/left.png')} style={{ height: 24, width: 24, marginLeft: 10 }} />
               </TouchableOpacity>
             ),
           })}
