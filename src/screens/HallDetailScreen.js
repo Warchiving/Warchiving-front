@@ -1,5 +1,4 @@
-// HallDetailScreen.js
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView, Dimensions } from 'react-native';
 import Swiper from 'react-native-swiper';
 import colors from '../components/colors';
@@ -8,6 +7,9 @@ const { width } = Dimensions.get('window');
 
 export default function HallDetailScreen({ route, navigation }) {
   const { hall } = route.params;
+  
+  // 하트 상태 관리
+  const [isLiked, setIsLiked] = useState(false);
 
   // 슬라이드 이미지 배열
   const slides = [
@@ -45,13 +47,17 @@ export default function HallDetailScreen({ route, navigation }) {
           <Text style={styles.title}>{hall.name}</Text>
           <Text style={styles.location}>{hall.location}</Text>
 
-          <Text style={styles.price}>{hall.price}</Text>
-
           {/* 버튼 영역 상단에 선 추가 */}
           <View style={styles.actionsContainer}>
             <View style={styles.topBorder} />
-            <TouchableOpacity style={styles.actionButton}>
-              <Image source={require('../../assets/heart.png')} style={styles.icon} />
+            <TouchableOpacity 
+              style={styles.actionButton}
+              onPress={() => setIsLiked(!isLiked)} // 하트 클릭 시 상태 변경
+            >
+              <Image 
+                source={isLiked ? require('../../assets/fullheart.png') : require('../../assets/heart.png')} 
+                style={styles.icon} 
+              />
               <Text style={styles.actionText}>찜</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.actionButton}>
@@ -70,12 +76,15 @@ export default function HallDetailScreen({ route, navigation }) {
         </View>
       </ScrollView>
 
-      <TouchableOpacity style={styles.bookButton}>
-        <Text style={styles.bookText}>예약 선택</Text>
-      </TouchableOpacity>
+      {/* 가격과 예약 버튼을 한 줄로 배치 */}
+      <View style={styles.footer}>
+        <Text style={styles.footerPrice}>{hall.price}</Text>
+        <TouchableOpacity style={styles.bookButton}>
+          <Text style={styles.bookText}>예약 선택</Text>
+        </TouchableOpacity>
+      </View>
       
     </View>
-
   );
 }
 
@@ -84,7 +93,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white'
   },
   container: {
-    flex:1,
+    flex: 1,
     backgroundColor: 'white'
   },
   wrapper: {
@@ -133,11 +142,11 @@ const styles = StyleSheet.create({
   price: { fontSize: 20, fontWeight: 'bold', marginVertical: 20 },
   actionsContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-evenly',
+    justifyContent: 'space-around',
     marginVertical: 10,
     paddingTop: 10,
     borderTopWidth: 1,
-    borderTopColor: colors.Grey600,
+    borderTopColor: '#E3E3E3',
     width: '100%',
   },
   actionButton: {
@@ -146,13 +155,32 @@ const styles = StyleSheet.create({
   },
   icon: { width: 24, height: 24, marginBottom: 5 },
   actionText: { color: colors.Grey600, fontSize: 12, textAlign: 'center' },
-  bookButton: { 
-    marginHorizontal:20,
-    backgroundColor: colors.Black, 
-    padding: 15, 
+  footer: { 
+    flexDirection: 'row', 
+    justifyContent: 'space-between', 
     alignItems: 'center', 
-    borderRadius: 10,
-    marginBottom:30,
-   },
-  bookText: { color: 'white', fontSize: 18, fontWeight: 'bold' },
+    paddingHorizontal: 20, 
+    paddingVertical: 15, 
+    borderTopWidth: 1, 
+    borderColor: '#E3E3E3',
+    paddingBottom: 30,
+    paddingLeft: 30,
+    paddingRight: 30,
+  },
+  footerPrice: { 
+    fontSize: 18,  // 크기 축소
+    fontWeight: 'bold', 
+    color: colors.Black,
+  },
+  bookButton: { 
+    backgroundColor: colors.Black, 
+    paddingVertical: 8,  // 세로 패딩 축소
+    paddingHorizontal: 20,  // 가로 패딩 축소
+    borderRadius: 8,  // 버튼 모서리 반경 축소
+  },
+  bookText: { 
+    color: 'white', 
+    fontSize: 16,  // 텍스트 크기 축소
+    fontWeight: 'bold' 
+  },
 });
