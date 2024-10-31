@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import colors from './colors';
-import heartIcon from '../../assets/heart.png';
+import heartIcon from '../../assets/halllistheart.png';
 import fullHeartIcon from '../../assets/fullheart.png';
-import addIcon from '../../assets/add.png';
 
 const HallItem = ({ hall, navigation }) => {
   const [isLiked, setIsLiked] = useState(false);
@@ -19,9 +18,6 @@ const HallItem = ({ hall, navigation }) => {
         <View style={styles.iconOverlay}>
           <TouchableOpacity onPress={toggleLike} style={styles.iconButton}>
             <Image source={isLiked ? fullHeartIcon : heartIcon} style={styles.icon} />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.iconButton}>
-            <Image source={addIcon} style={styles.icon} />
           </TouchableOpacity>
         </View>
       </View>
@@ -76,8 +72,8 @@ const styles = StyleSheet.create({
     marginRight: 3,
   },
   icon: {
-    width: 20,
-    height: 20,
+    width: 25,
+    height: 25,
   },
   itemInfo: {
     flex: 1,
