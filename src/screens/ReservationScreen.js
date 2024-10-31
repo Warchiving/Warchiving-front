@@ -105,7 +105,7 @@ export default function ReservationScreen({ route, navigation }) {
                 <TouchableOpacity style={styles.cartButton}>
                     <Text style={styles.cartButtonText}>장바구니</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.confirmButton}>
+                <TouchableOpacity style={styles.confirmButton} onPress={() => navigation.navigate('ReservationSuccess')}>
                     <Text style={styles.confirmButtonText}>예약 확정</Text>
                 </TouchableOpacity>
             </View>
