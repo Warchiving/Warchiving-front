@@ -16,47 +16,53 @@ export default function MainScreen({ navigation }) {
   };
 
   const categories = [
-    { image: require('../../assets/Folder.png'), text: '전체', screen: 'HallPrice' },
-    { image: require('../../assets/Folder.png'), text: '스튜디오', screen: 'HallPrice' },
-    { image: require('../../assets/Folder.png'), text: '웨딩홀', screen: 'HallTags' },
-    { image: require('../../assets/Folder.png'), text: '드레스', screen: 'HallPrice' },
-    { image: require('../../assets/Folder.png'), text: '메이크업', screen: 'HallPrice' },
+    { image: require('../../assets/entire_icon.png'), text: '전체', screen: 'HallPrice' },
+    { image: require('../../assets/hall_icon.png'), text: '웨딩홀', screen: 'HallPrice' },
+    { image: require('../../assets/studio_icon.png'), text: '스튜디오', screen: 'HallTags' },
+    { image: require('../../assets/makeup_icon.png'), text: '메이크업', screen: 'HallPrice' },
+    { image: require('../../assets/dress_icon.png'), text: '드레스', screen: 'HallPrice' },
   ];
 
   const Hallimages = [
-    require('../../assets/GreyImg.png'),
-    require('../../assets/GreyImg.png'),
-    require('../../assets/GreyImg.png'),
-    require('../../assets/GreyImg.png'),
-    require('../../assets/GreyImg.png'),
-    require('../../assets/GreyImg.png'),
+    require('../../assets/hall/hall_img1.jpg'),
+    require('../../assets/hall/hall_img2.jpg'),
+    require('../../assets/hall/hall_img3.jpg'),
+    require('../../assets/hall/hall_img4.jpg'),
+    require('../../assets/hall/hall_img5.jpg'),
   ];
 
 
   const Hallimages2 = [
-    require('../../assets/GreyImg.png'),
-    require('../../assets/GreyImg.png'),
-    require('../../assets/GreyImg.png'),
-    require('../../assets/GreyImg.png'),
-    require('../../assets/GreyImg.png'),
-    require('../../assets/GreyImg.png'),
+    require('../../assets/studio/studio_img1.jpg'),
+    require('../../assets/studio/studio_img2.jpg'),
+    require('../../assets/studio/studio_img5.jpg'),
+    require('../../assets/studio/studio_img4.jpg'),
+    require('../../assets/studio/studio_img3.jpg'),
+  ];
+
+  const Makeupimages = [
+    require('../../assets/makeup/makeup_img1.jpg'),
+    require('../../assets/makeup/makeup_img2.jpg'),
+    require('../../assets/makeup/makeup_img3.jpg'),
+    require('../../assets/makeup/makeup_img4.jpg'),
+    require('../../assets/makeup/makeup_img5.jpg'),
   ];
 
   const slides = [
     {
       image: require('../../assets/Mainbanner1.png'),
       title: '트렌디한 메이크업 스튜디오',
-      subText: '00 메이크업, 99 메이크업',
+      subText: '글로우 메이크업 모아보기',
     },
     {
       image: require('../../assets/Mainbanner2.png'),
-      title: '럭셔리 웨딩홀 패키지',
-      subText: 'AAA 웨딩, BBB 패키지',
+      title: '럭셔리 웨딩홀 특가',
+      subText: '르비르모어 선릉, 더베뉴지 서울',
     },
     {
       image: require('../../assets/Mainbanner3.png'),
-      title: '아름다운 드레스 컬렉션',
-      subText: 'CCC 드레스, DDD 콜라보',
+      title: '지인들만을 위한 특별한 스몰웨딩',
+      subText: '야외 스몰웨딩 모아보기',
     },
   ];
 
@@ -122,13 +128,13 @@ export default function MainScreen({ navigation }) {
           ))}
         </View>
 
-        {/* 홀 추천1 */}
-        <View style={{ marginTop: 40 }}>
+                        {/* 메이크업 추천 */}
+                        <View style={{ marginTop: 30 }}>
           <Text style={{ marginLeft: 20, marginBottom: 10, fontWeight: '600' }}>
             <Text style={styles.HallText}>#추가_비용_없는</Text> 메이크업 샵
           </Text>
           <ScrollView style={styles.Imglist} horizontal={true} showsHorizontalScrollIndicator={false}>
-            {Hallimages.map((img, index) => (
+            {Makeupimages.map((img, index) => (
               <View key={index} style={[styles.imageWrapper, index === 0 && { marginLeft: 20 }]}>
                 {/* Main Image */}
                 <Image source={img} style={styles.Hallimage} />
@@ -143,8 +149,9 @@ export default function MainScreen({ navigation }) {
           </ScrollView>
         </View>
 
-        {/* 홀 추천2 */}
-        <View style={{ marginTop: 30 }}>
+
+                {/* 드레스 추천 */}
+                <View style={{ marginTop: 30 }}>
           <Text style={{ marginLeft: 20, marginBottom: 10, fontWeight: '600' }}>
             <Text style={styles.HallText}>#서비스가_좋은</Text> 드레스샵
           </Text>
@@ -164,26 +171,29 @@ export default function MainScreen({ navigation }) {
           </ScrollView>
         </View>
 
-        {/* 홀 추천3 */}
-        <View style={{ marginTop: 30 }}>
+        {/* 홀 추천 */}
+        <View style={{ marginTop: 40 }}>
           <Text style={{ marginLeft: 20, marginBottom: 10, fontWeight: '600' }}>
-            <Text style={styles.HallText}>#서비스가_좋은</Text> 드레스샵
+            <Text style={styles.HallText}>#생화가_유명한</Text> 웨딩홀
           </Text>
           <ScrollView style={styles.Imglist} horizontal={true} showsHorizontalScrollIndicator={false}>
-            {Hallimages2.map((img, index) => (
+            {Hallimages.map((img, index) => (
               <View key={index} style={[styles.imageWrapper, index === 0 && { marginLeft: 20 }]}>
-              {/* Main Image */}
-              <Image source={img} style={styles.Hallimage} />
+                {/* Main Image */}
+                <Image source={img} style={styles.Hallimage} />
 
-              {/* Icons overlay */}
-              <View style={styles.iconContainer}>
-                <Image source={require('../../assets/heart_icon.png')} style={styles.icon} />
-                <Image source={require('../../assets/bag_icon.png')} style={[styles.icon,]} />
+                {/* Icons overlay */}
+                <View style={styles.iconContainer}>
+                  <Image source={require('../../assets/heart_icon.png')} style={styles.icon} />
+                  <Image source={require('../../assets/bag_icon.png')} style={[styles.icon,]} />
+                </View>
               </View>
-            </View>
             ))}
           </ScrollView>
         </View>
+
+
+
 
         <View style={{ marginBottom: 200, }} />
 
@@ -198,8 +208,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   categoryImg: {
-    width: 60,
-    height: 60,
+    width: 45,
+    height: 45,
+    marginTop:10,
   },
   MainLogo: {
     width: 50,
@@ -216,7 +227,7 @@ const styles = StyleSheet.create({
   },
   categoryContainer: {
     alignItems: 'center',
-    padding: 5,
+    padding: 12,
   },
   category: {
     flexDirection: 'row',
@@ -224,18 +235,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   categroyText: {
-    marginTop: 6,
+    marginTop: 15,
     fontWeight: 700,
+    fontWeight:'500'
   },
   Imglist: {
     flexDirection: 'row',
-  },
-  Hallimage: {
-    width: 100,
-    height: 120,
-    borderRadius: 7,
-    marginHorizontal: 6,
-    backgroundColor: '#e0e0e0', // Placeholder color for image
   },
   wrapper: {
     height: 350,
@@ -285,15 +290,15 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   Hallimage: {
-    width: 110,
-    height: 130,
+    width: 130,
+    height: 150,
     borderRadius: 7,
-    marginRight:8,
+    marginRight:13,
   },
   iconContainer: {
     position: 'absolute',
     top: 5,
-    right: 80,
+    right: 105,
     flexDirection: 'row',
   },
   icon: {
