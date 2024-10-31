@@ -76,16 +76,24 @@ export default function HallDetailScreen({ route, navigation }) {
         </View>
       </ScrollView>
 
-      {/* 가격과 예약 버튼을 한 줄로 배치 */}
-      <View style={styles.footer}>
-        <Text style={styles.footerPrice}>{hall.price}</Text>
-        <TouchableOpacity 
-      style={styles.bookButton}
-      onPress={() => navigation.navigate('Reservation', { hall })}
-      >
-        <Text style={styles.bookText}>예약 선택</Text>
-      </TouchableOpacity>
-      </View>
+            {/* 가격과 상담예약, 바로구매 */}
+            <View style={styles.footer}>
+                <Text style={styles.price}>350,000원</Text>
+
+                {/* 상담예약 */}
+                <TouchableOpacity 
+                style={styles.cartButton}
+                onPress={() => navigation.navigate('Reservation', { hall })}>
+                    <Text style={styles.cartButtonText}>상담예약</Text>
+                </TouchableOpacity>
+                
+                {/* 바로구매 */}
+                <TouchableOpacity 
+                style={styles.confirmButton}       
+                onPress={() => navigation.navigate('Reservation', { hall })}>
+                    <Text style={styles.confirmButtonText}>바로구매</Text>
+                </TouchableOpacity>
+            </View>
       
     </View>
   );
@@ -141,8 +149,6 @@ const styles = StyleSheet.create({
     fontSize: 13,
     color: colors.Grey600,
   },
-
-  price: { fontSize: 20, fontWeight: 'bold', marginVertical: 20 },
   actionsContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
@@ -158,18 +164,6 @@ const styles = StyleSheet.create({
   },
   icon: { width: 24, height: 24, marginBottom: 5 },
   actionText: { color: colors.Grey600, fontSize: 12, textAlign: 'center' },
-  footer: { 
-    flexDirection: 'row', 
-    justifyContent: 'space-between', 
-    alignItems: 'center', 
-    paddingHorizontal: 20, 
-    paddingVertical: 15, 
-    borderTopWidth: 1, 
-    borderColor: '#E3E3E3',
-    paddingBottom: 30,
-    paddingLeft: 30,
-    paddingRight: 30,
-  },
   footerPrice: { 
     fontSize: 18,  // 크기 축소
     fontWeight: 'bold', 
@@ -186,4 +180,37 @@ const styles = StyleSheet.create({
     fontSize: 16,  // 텍스트 크기 축소
     fontWeight: 'bold' 
   },
+  footer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderTopWidth: 1,
+    borderTopColor: '#ddd',
+    padding: 20,
+    marginBottom: 20,
+},
+price: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    width: '48%',
+},
+cartButton: {
+  backgroundColor: '#ddd',
+  paddingVertical: 10,
+  paddingHorizontal: 20,
+  borderRadius: 5,
+  marginRight: 10,
+},
+cartButtonText: {
+  color: 'black',
+},
+confirmButton: {
+  backgroundColor: 'black',
+  paddingVertical: 10,
+  paddingHorizontal: 20,
+  borderRadius: 5,
+},
+confirmButtonText: {
+  color: 'white',
+  fontWeight: 'bold'
+},
 });
