@@ -37,11 +37,12 @@ export default function ReservationScreen({ route, navigation }) {
                         shadowColor: '#000',  // Adds shadow (iOS)
                         shadowOpacity: 0.1,
                         shadowRadius: 15,
-                        padding: 10,
                     }}
                     onDayPress={onDayPress}
                     markedDates={{
-                        [selectedDate]: { selected: true, selectedColor: '#ff6b6b', selectedTextColor: 'white' },
+                        [selectedDate]: { selected: true, 
+                            selectedColor: '#ff6b6b', 
+                            selectedTextColor: 'white' },
                     }}
                     theme={{
                         backgroundColor: 'white',
@@ -62,8 +63,8 @@ export default function ReservationScreen({ route, navigation }) {
                 />
 
                 {/* <Text style={styles.selectedDateText}>
-        선택된 날짜: {selectedDate || '날짜를 선택하세요'}
-      </Text> */}
+                선택된 날짜: {selectedDate || '날짜를 선택하세요'}
+                </Text> */}
 
                 {/* Time Selector */}
                 <Text style={styles.sectionTitle}>예약할 시간대를 선택해주세요</Text>
