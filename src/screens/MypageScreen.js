@@ -1,15 +1,40 @@
-// MypageScreen.js
-
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
-import { Calendar } from 'react-native-calendars';
+import { Calendar, LocaleConfig } from 'react-native-calendars'; // LocaleConfig 추가
 import Icon from 'react-native-vector-icons/MaterialIcons';
+
+// Locale 설정을 추가하여 달력에 한글을 적용
+LocaleConfig.locales['kr'] = {
+    monthNames: [
+        '1월', '2월', '3월', '4월', '5월', '6월',
+        '7월', '8월', '9월', '10월', '11월', '12월'
+    ],
+    monthNamesShort: [
+        '1월', '2월', '3월', '4월', '5월', '6월',
+        '7월', '8월', '9월', '10월', '11월', '12월'
+    ],
+    dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
+    dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+    today: '오늘'
+};
+LocaleConfig.defaultLocale = 'kr'; // 기본 로케일을 kr로 설정
 
 export default function MypageScreen() {
     const [selectedDate, setSelectedDate] = useState('');
 
     const onDayPress = (day) => {
         setSelectedDate(day.dateString);
+    };
+
+    // 커스텀 날짜 렌더링 함수
+    const renderDay = (day) => {
+        const isMarked = day?.dateString === '2024-11-13';
+        return (
+            <View style={styles.dayContainer}>
+                {isMarked && <View style={styles.dot} />} 
+                <Text style={styles.dayText}>{day?.day ? day.day.toString() : ''}</Text>
+            </View>
+        );
     };
 
     return (
@@ -22,7 +47,7 @@ export default function MypageScreen() {
                 />
                 <View style={styles.profileTextContainer}>
                     <Text style={styles.profileName}>오구 님</Text>
-                    <Text style={styles.eventCountdown}>스튜디오 촬영 D-3</Text>
+                    <Text style={styles.eventCountdown}>웨딩홀 상담 D-12</Text>
                 </View>
                 <TouchableOpacity style={styles.editIconContainer}>
                     <Image
@@ -51,14 +76,13 @@ export default function MypageScreen() {
                     <Calendar
                         onDayPress={onDayPress}
                         style={{ borderWidth: 1, borderRadius: 10, borderColor: '#EDEDED' }}
-                        markedDates={{
-                            [selectedDate]: { selected: true, selectedColor: '#ff6b6b' },
-                        }}
+                        dayComponent={({ date }) => renderDay(date)}
                         theme={{
                             selectedDayBackgroundColor: '#ff6b6b',
                             arrowColor: 'black',
                             todayTextColor: '#ff6b6b',
                         }}
+                        monthFormat={'yyyy년 MM월'}
                     />
                 </View>
 
@@ -82,7 +106,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         padding: 20,
-        //borderBottomWidth: 1,
         borderBottomColor: '#ddd',
         backgroundColor: 'white',
     },
@@ -95,9 +118,9 @@ const styles = StyleSheet.create({
         padding: 5,
     },
     editIcon: {
-        width: 20, // 원하는 크기로 설정하세요
+        width: 20,
         height: 20,
-        tintColor: '#aaa', // 아이콘 색상을 변경할 때 사용
+        tintColor: '#aaa',
     },
 
     scrollableContent: { flex: 1 },
@@ -108,7 +131,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 10,
         borderColor: '#EDEDED',
-        overflow: 'hidden', // 테두리 밖으로 내용이 나가지 않도록 설정
+        overflow: 'hidden',
     },
     preferenceButton: {
         flexDirection: 'row',
@@ -136,4 +159,24 @@ const styles = StyleSheet.create({
         borderBottomColor: '#ddd',
     },
     optionText: { fontSize: 16 },
+
+    dayContainer: {
+        alignItems: 'center',
+        justifyContent: 'flex-end', // 텍스트가 항상 하단에 정렬되도록 설정
+        width: 20, // 각 날짜 셀의 너비 고정
+        height: 30, // 각 날짜 셀의 높이 고정
+        paddingBottom: 8, // 날짜와 셀 하단 간 간격 조절
+    },
+    dot: {
+        width: 5,
+        height: 5,
+        borderRadius: 2.5,
+        backgroundColor: '#ff6b6b',
+        position: 'absolute', // 점을 절대 위치로 설정
+        top: -5, // 점의 위치를 텍스트 위로 설정
+    },
+    dayText: {
+        fontSize: 16,
+        color: '#333',
+    },
 });
