@@ -138,7 +138,7 @@ export default function HallDetailScreen({ route, navigation }) {
               title="몇명까지 수용가능한가요?"
               subtitle="수용인원"
               imageSource={require('../../assets/detail_icon/person.png')}
-              infoText={`최대 200명`}
+              infoText={`최대 300명`}
             />
             <InfoCardTags
               title="화려한 생화와 깔끔한 버진로드"
