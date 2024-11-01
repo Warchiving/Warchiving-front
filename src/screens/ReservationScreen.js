@@ -36,7 +36,7 @@ export default function ReservationScreen({ route, navigation }) {
 
             {/* Hall Information */}
             <View style={styles.hallInfoContainer}>
-                <Image source={{ uri: hall.imageUrl }} style={styles.hallImage} />
+                <Image source={ hall.image } style={styles.hallImage} />
                 <View>
                     <Text style={styles.hallName}>{hall.name}</Text>
                     <Text style={styles.hallLocation}>{hall.location}</Text>
@@ -153,18 +153,22 @@ const styles = StyleSheet.create({
         padding: 12,
     },
     hallImage: {
-        width: 50,
+        width: 60,
         height: 50,
-        borderRadius: 5,
-        marginRight: 10
+        borderRadius: 3,
+        marginRight: 13,
+        marginLeft:10,
+        marginTop:10,
     },
     hallName: {
         fontSize: 16,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        marginTop:10,
     },
     hallLocation: {
         fontSize: 13,
-        color: 'grey'
+        color: 'grey',
+        marginTop:4,
     },
     sectionTitle: {
         fontSize: 16,

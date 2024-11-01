@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
         width: 100,
     },
     HallGuarantorImg: {
-        width: 350,  // Set the desired width
+        width: 320,  // Set the desired width
         height: 200,
         resizeMode: 'contain',  // Maintain aspect ratio
         alignSelf: 'center',  // If you want to center the image
