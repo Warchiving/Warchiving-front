@@ -9,8 +9,12 @@ import HallGuarantorScreen from '../screens/HallGuarantorScreen';
 import HallLoadingScreen from '../screens/HallLoadingScreen';
 import HallDetailScreen from '../screens/HallDetailScreen';
 import ReservationScreen from '../screens/ReservationScreen';
+
+import LikeEditScreen from '../screens/like/LikeEditScreen';
+import LikeProductsScreen from '../screens/like/LikedProductsScreen';
 import ReservationSuccessScreen from '../screens/ReservationSuccessScreen';
 import { TouchableOpacity, Image } from 'react-native';
+
 
 const Stack = createStackNavigator();
 
@@ -105,10 +109,10 @@ const RootStackNavigator = () => (
       })}
     />
     <Stack.Screen
-      name="ReservationSuccess"
-      component={ReservationSuccessScreen}
+      name="LikeEdit"
+      component={LikeEditScreen}
       options={({ route, navigation }) => ({
-        headerTitle: '예약하기',
+        headerTitle: '제목 없음',
         headerLeft: () => (
           <TouchableOpacity onPress={() => navigation.goBack()}>
             <Image source={require('../../assets/left.png')} style={{ height: 24, width: 24, marginLeft: 10 }} />
@@ -116,6 +120,27 @@ const RootStackNavigator = () => (
         ),
       })}
     />
+    <Stack.Screen
+      name="LikeProducts"
+      component={LikeProductsScreen}  
+      options={({ route, navigation }) => ({
+        headerTitle: '찜 목록',
+      })}
+    />
+
+<Stack.Screen
+  name="ReservationSuccess"
+  component={ReservationSuccessScreen}
+  options={({ route, navigation }) => ({
+    headerTitle: '예약하기',
+    headerLeft: () => (
+      <TouchableOpacity onPress={() => navigation.goBack()}>
+        <Image source={require('../../assets/left.png')} style={{ height: 24, width: 24, marginLeft: 10 }} />
+      </TouchableOpacity>
+    ),
+  })}
+/>
+
   </Stack.Navigator>
 );
 
