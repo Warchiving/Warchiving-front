@@ -27,44 +27,47 @@ const FilterTabs = ({ activeFilter, onFilterChange }) => {
 };
 
 const SelectedItems = ({ items }) => {
-  const navigation = useNavigation(); // 네비게이션 훅 추가
-
-  return (
-    <View style={styles.selectedItemsContainer}>
-      <Text style={styles.selectedItemsTitle}>선택된 업체 {items.length}개</Text>
-      <FlatList
-        data={[...items, { id: 'add', isAddButton: true }]} // 플러스 박스 추가
-        renderItem={({ item }) => (
-          item.isAddButton ? (
-            <TouchableOpacity
-              style={styles.addBox}
-              onPress={() => navigation.navigate('LikeProducts')} // 플러스 박스 클릭 시 네비게이션
-            >
-              <Text style={styles.addIcon}>+</Text>
-            </TouchableOpacity>
-          ) : (
-            <SelectedCard
-              title={item.title}
-              price={item.price}
-              onHeartPress={item.onHeartPress}
-              onCartPress={item.onCartPress}
-              isFavorite={item.isFavorite}
-              imageSource={item.imageSource}
-            />
-          )
-        )}
-        keyExtractor={(item, index) => item.id || index.toString()}
-        numColumns={2}
-        columnWrapperStyle={styles.columnWrapper}
-        contentContainerStyle={styles.contentContainer}
-      />
-    </View>
-  );
-};
-
+    const navigation = useNavigation();
+    const numColumns = 3; // 한 줄에 3개씩 표시하도록 설정
+  
+    return (
+      <View style={styles.selectedItemsContainer}>
+        <Text style={styles.selectedItemsTitle}>선택된 업체 {items.length}개</Text>
+        
+        <FlatList
+          data={[...items]}
+          renderItem={({ item }) =>
+            item.isAddButton ? (
+              <TouchableOpacity
+                style={styles.addBox}
+                onPress={() => navigation.navigate('LikeProducts')}
+              >
+                <Text style={styles.addIcon}>+</Text>
+              </TouchableOpacity>
+            ) : (
+              <SelectedCard
+                title={item.title}
+                price={item.price}
+                onHeartPress={item.onHeartPress}
+                onCartPress={item.onCartPress}
+                isFavorite={item.isFavorite}
+                imageSource={item.imageSource}
+              />
+            )
+          }
+          keyExtractor={(item, index) => item.id || index.toString()}
+          numColumns={numColumns}  // 한 줄에 3개씩 정렬
+          key={numColumns}         // numColumns 값에 따라 FlatList를 새로고침
+          columnWrapperStyle={styles.columnWrapper}
+          contentContainerStyle={styles.contentContainer}
+        />
+      </View>
+    );
+  };
+  
 
 // 메인 컴포넌트
-const LikeEditScreen = () => {
+const LikeMadeScreen = () => {
   const [activeFilter, setActiveFilter] = useState('전체');
   const products = [
     {
@@ -75,7 +78,22 @@ const LikeEditScreen = () => {
       imageSource: require('../../../assets/makeup/makeup_img6.jpg'),
       isFavorite: true,
     },
-    // 추가 상품들...
+    {
+      title: '르비르모어 선릉',
+      price: '11,000,000',
+      onHeartPress: () => console.log('찜하기 눌림'),
+      onCartPress: () => console.log('장바구니 추가 눌림'),
+      imageSource: require('../../../assets/HallList/Hall6.png'),
+      isFavorite: true,
+    },
+    {
+      title: '스튜디오 M',
+      price: '9,500,000',
+      onHeartPress: () => console.log('찜하기 눌림'),
+      onCartPress: () => console.log('장바구니 추가 눌림'),
+      imageSource: require('../../../assets/HallList/Hall4.png'),
+      isFavorite: true,
+    },
   ];
 
   const handleFilterChange = (filter) => {
@@ -87,16 +105,11 @@ const LikeEditScreen = () => {
     <View style={styles.container}>
       {/* 상단 메인 이미지 */}
       <View style={styles.mainImageContainer}>
-        <Image source={require('../../../assets/img_edit_sample.png')} style={styles.mainImage} />
+        <Image source={require('../../../assets/arc_sample.png')} style={styles.mainImage} />
       </View>
       <FilterTabs activeFilter={activeFilter} onFilterChange={handleFilterChange} />
       <View style={styles.separator} />
       <SelectedItems items={products} />
-
-      {/* 저장하기 버튼 */}
-      <TouchableOpacity style={styles.saveButton} onPress={() => console.log('저장하기 눌림')}>
-        <Text style={styles.saveButtonText}>저장하기</Text>
-      </TouchableOpacity>
     </View>
   );
 };
@@ -144,7 +157,8 @@ const styles = StyleSheet.create({
     color: '#fff', // 활성 필터의 텍스트 색상 (흰색)
   },
   selectedItemsContainer: {
-    padding: 16,
+    padding: 4,
+    marginTop : 5,
   },
   selectedItemsTitle: {
     fontSize: 16,
@@ -176,20 +190,6 @@ const styles = StyleSheet.create({
     fontSize: 40,
     color: '#cccccc',
   },
-  saveButton: {
-    backgroundColor: '#f2f2f2', // 회색 배경
-    paddingVertical: 15,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginHorizontal: 16,
-    borderRadius: 8,
-    marginTop : 140,
-  },
-  saveButtonText: {
-    color: '#ffffff',
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
 });
 
-export default LikeEditScreen;
+export default LikeMadeScreen;

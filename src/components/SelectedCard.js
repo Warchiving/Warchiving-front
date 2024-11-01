@@ -1,24 +1,18 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 
-const SelectedCard = ({ title, price, onHeartPress, onCartPress, isFavorite }) => {
+const SelectedCard = ({ title, price, onHeartPress, onCartPress, isFavorite, imageSource }) => {
   return (
     <View style={styles.card}>
-      <View style={styles.imagePlaceholder}>
-        {/* 아이콘 컨테이너 */}
+      <View style={styles.imageContainer}>
+        <Image source={imageSource} style={styles.image} />
         <View style={styles.iconContainer}>
           <TouchableOpacity onPress={onHeartPress}>
             <Image
-              source={require('../../assets/heart.png')}
+              source={require('../../assets/img_fill_heart.png')}
               style={[styles.icon, isFavorite && styles.favoriteIcon]}
             />
           </TouchableOpacity>
-          {/* <TouchableOpacity onPress={onCartPress}>
-            <Image
-              source={require('../../assets/box.png')}
-              style={styles.icon}
-            />
-          </TouchableOpacity> */}
         </View>
       </View>
       <Text style={styles.title}>{title}</Text>
@@ -29,8 +23,8 @@ const SelectedCard = ({ title, price, onHeartPress, onCartPress, isFavorite }) =
 
 const styles = StyleSheet.create({
   card: {
-    height : 148, 
-    width: 112,
+    height : 168, 
+    width: 122,
     padding: 8,
     backgroundColor: '#fff',
     borderRadius: 5,
@@ -41,13 +35,14 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     shadowOffset: { width: 0, height: 2 },
     marginLeft: 4,
+    marginTop : 5,
   },
   imagePlaceholder: {
     width: '100%',
     height: 90,
     backgroundColor: '#ccc', // 회색 처리
-    borderRadius: 8,
-    marginBottom: 8,
+    borderRadius: 3,
+    marginBottom: 3,
     position: 'relative', // 아이콘을 위치시킬 기준이 됩니다.
   },
   iconContainer: {
@@ -61,17 +56,32 @@ const styles = StyleSheet.create({
     height: 24,
     marginLeft: 3,
   },
+  imageContainer: {
+    width: '100%',
+    height: 110,
+    borderRadius: 4,
+    overflow: 'hidden',
+    position: 'relative',
+    backgroundColor: '#ccc', // 기본 회색 배경
+  },
+  image: {
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover',
+  },
   favoriteIcon: {
-    tintColor: 'red', // 즐겨찾기일 경우 색상 변경
+    
   },
   title: {
     fontSize: 16,
     fontWeight: 'bold',
+    marginTop : 4 , 
   },
   price: {
     fontSize: 14,
     color: '#555',
     marginVertical: 1,
+    marginTop : 3, 
   },
 });
 
