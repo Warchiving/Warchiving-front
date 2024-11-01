@@ -3,29 +3,34 @@ import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 
 const ArchiveCard = ({ title, date, imageSrc, onOptionsPress }) => {
   return (
-    <View style = {styles.container}>
-    <TouchableOpacity style={styles.card} onPress={onOptionsPress}>
-      <View style={styles.imageContainer}>
-        <Image source={imageSrc} style={styles.image} />
-        <TouchableOpacity onPress={onOptionsPress} style={styles.optionsButton}>
-          <Text style={styles.optionsIcon}>⋮</Text> 
-        </TouchableOpacity>
-      </View>
-      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-        <Text style={styles.title}>{title}</Text>
-      </View>
-      <Text style={styles.date}>{date}</Text>
-    </TouchableOpacity>
+    <View style={styles.container}>
+      <TouchableOpacity style={styles.card} onPress={onOptionsPress}>
+        <View style={styles.imageContainer}>
+          <Image source={imageSrc} style={styles.image} />
+        </View>
+        <View style={styles.titleRow}>
+          <Text style={styles.title}>{title}</Text>
+          <TouchableOpacity onPress={onOptionsPress} style={styles.optionsButton}>
+            <Text style={styles.optionsIcon}>⋮</Text> 
+          </TouchableOpacity>
+        </View>
+        <Text style={styles.date}>{date}</Text>
+      </TouchableOpacity>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container : {
-    flex : 1,
+  container: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    paddingHorizontal: 8,
+    paddingTop: 8,
   },
   card: {
-    width: '100%',
+    width: 173,
+    height: 222,
     backgroundColor: '#fff',
     borderRadius: 8,
     marginBottom: 16,
@@ -38,7 +43,7 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     width: '100%',
-    height: 120,
+    height: 150,
     borderRadius: 8,
     overflow: 'hidden',
     position: 'relative',
@@ -48,25 +53,33 @@ const styles = StyleSheet.create({
     height: '100%',
     resizeMode: 'cover',
   },
-  optionsButton: {
-    position: 'absolute',
-    top: 8,
-    right: 8,
-    padding: 4,
-  },
-  optionsIcon: {
-    fontSize: 20,
-    color: '#555',
+  titleRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between', 
+    width: '100%',
+    paddingHorizontal: 8,
+    marginTop: 8,
   },
   title: {
     fontSize: 16,
     fontWeight: 'bold',
-    marginTop: 8,
+    marginTop : 5, 
+  },
+  optionsButton: {
+    paddingHorizontal: 8,
+  },
+  optionsIcon: {
+    fontSize: 20,
+    marginTop : 3,
+    color: '#555',
+    marginEnd : -25, 
   },
   date: {
     fontSize: 12,
     color: '#777',
     marginTop: 4,
+    marginLeft : -30 ,
   },
 });
 

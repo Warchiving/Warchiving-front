@@ -26,19 +26,29 @@ const FilterTabs = ({ activeFilter, onFilterChange }) => {
   );
 };
 
+
 const SelectedItems = ({ items }) => {
-  const navigation = useNavigation(); // 네비게이션 훅 추가
+  const navigation = useNavigation();
+  const numColumns = 3;
+  
+
+  // addBox 아이템을 items 배열의 마지막에 추가
+  const itemsWithAddBox = [
+    ...items,
+    { id: 'addBox', isAddButton: true }
+  ];
 
   return (
     <View style={styles.selectedItemsContainer}>
       <Text style={styles.selectedItemsTitle}>선택된 업체 {items.length}개</Text>
+      
       <FlatList
-        data={[...items, { id: 'add', isAddButton: true }]} // 플러스 박스 추가
-        renderItem={({ item }) => (
+        data={itemsWithAddBox}
+        renderItem={({ item }) =>
           item.isAddButton ? (
             <TouchableOpacity
               style={styles.addBox}
-              onPress={() => navigation.navigate('LikeProducts')} // 플러스 박스 클릭 시 네비게이션
+              onPress={() => navigation.navigate('LikeProducts')}
             >
               <Text style={styles.addIcon}>+</Text>
             </TouchableOpacity>
@@ -52,9 +62,10 @@ const SelectedItems = ({ items }) => {
               imageSource={item.imageSource}
             />
           )
-        )}
+        }
         keyExtractor={(item, index) => item.id || index.toString()}
-        numColumns={2}
+        numColumns={numColumns}
+        key={numColumns}
         columnWrapperStyle={styles.columnWrapper}
         contentContainerStyle={styles.contentContainer}
       />
@@ -64,8 +75,10 @@ const SelectedItems = ({ items }) => {
 
 
 // 메인 컴포넌트
-const LikeEditScreen = () => {
+const LikeFinScreen = () => {
   const [activeFilter, setActiveFilter] = useState('전체');
+  const navigation = useNavigation();
+
   const products = [
     {
       title: '오늘',
@@ -75,7 +88,23 @@ const LikeEditScreen = () => {
       imageSource: require('../../../assets/makeup/makeup_img6.jpg'),
       isFavorite: true,
     },
-    // 추가 상품들...
+    {
+      title: '르비르모어 선릉',
+      price: '11,000,000',
+      onHeartPress: () => console.log('찜하기 눌림'),
+      onCartPress: () => console.log('장바구니 추가 눌림'),
+      imageSource: require('../../../assets/HallList/Hall6.png'),
+      isFavorite: true,
+    },
+    {
+      title: '스튜디오 M',
+      price: '9,500,000',
+      onHeartPress: () => console.log('찜하기 눌림'),
+      onCartPress: () => console.log('장바구니 추가 눌림'),
+      imageSource: require('../../../assets/HallList/Hall4.png'),
+      isFavorite: true,
+    },
+  
   ];
 
   const handleFilterChange = (filter) => {
@@ -94,7 +123,10 @@ const LikeEditScreen = () => {
       <SelectedItems items={products} />
 
       {/* 저장하기 버튼 */}
-      <TouchableOpacity style={styles.saveButton} onPress={() => console.log('저장하기 눌림')}>
+      <TouchableOpacity
+        style={styles.saveButton}
+        onPress={() => navigation.navigate('LikeMade')} // LikeMade 화면으로 이동
+      >
         <Text style={styles.saveButtonText}>저장하기</Text>
       </TouchableOpacity>
     </View>
@@ -144,23 +176,25 @@ const styles = StyleSheet.create({
     color: '#fff', // 활성 필터의 텍스트 색상 (흰색)
   },
   selectedItemsContainer: {
-    padding: 16,
+    padding: 6,
+    marginTop : 10,
+    flex: 1, // 이 부분 추가
   },
   selectedItemsTitle: {
     fontSize: 16,
     fontWeight: 'bold',
-    marginBottom: 10,
+    marginBottom: 5,
   },
   columnWrapper: {
     justifyContent: 'flex-start',
   },
   contentContainer: {
-    paddingBottom: 20,
+    paddingBottom: 100, // 저장하기 버튼이 덮이지 않도록 여백 추가
   },
   separator: {
     height: 4,
     backgroundColor: colors.Grey300 , 
-    marginHorizontal: 0, // 좌우 여백
+    marginHorizontal: 0,
     marginTop: 8,
   },
   addBox: {
@@ -168,6 +202,7 @@ const styles = StyleSheet.create({
     width: 112,
     backgroundColor: '#f2f2f2',
     borderRadius: 8,
+    marginTop : 3,
     justifyContent: 'center',
     alignItems: 'center',
     marginLeft : 12, 
@@ -177,13 +212,15 @@ const styles = StyleSheet.create({
     color: '#cccccc',
   },
   saveButton: {
-    backgroundColor: '#f2f2f2', // 회색 배경
+    backgroundColor: '#222222',
     paddingVertical: 15,
     alignItems: 'center',
     justifyContent: 'center',
-    marginHorizontal: 16,
     borderRadius: 8,
-    marginTop : 140,
+    position: 'absolute', // 버튼을 하단에 고정
+    bottom: 20, // 화면 하단에서 약간 위로 띄워서 배치
+    left: 16,
+    right: 16,
   },
   saveButtonText: {
     color: '#ffffff',
@@ -192,4 +229,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LikeEditScreen;
+export default LikeFinScreen;

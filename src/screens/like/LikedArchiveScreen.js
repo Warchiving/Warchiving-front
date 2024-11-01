@@ -33,7 +33,7 @@ const SelectedItems = ({ items }) => {
     <View style={styles.selectedItemsContainer}>
       <Text style={styles.selectedItemsTitle}>선택된 업체 {items.length}개</Text>
       <FlatList
-        data={[...items, { id: 'add', isAddButton: true }]} // 플러스 박스 추가
+        data={[...items]} // 플러스 박스 추가
         renderItem={({ item }) => (
           item.isAddButton ? (
             <TouchableOpacity
@@ -64,7 +64,7 @@ const SelectedItems = ({ items }) => {
 
 
 // 메인 컴포넌트
-const LikeEditScreen = () => {
+const LikeArchiveScreen = () => {
   const [activeFilter, setActiveFilter] = useState('전체');
   const products = [
     {
@@ -87,16 +87,11 @@ const LikeEditScreen = () => {
     <View style={styles.container}>
       {/* 상단 메인 이미지 */}
       <View style={styles.mainImageContainer}>
-        <Image source={require('../../../assets/img_edit_sample.png')} style={styles.mainImage} />
+        <Image source={require('../../../assets/arc_sample.png')} style={styles.mainImage} />
       </View>
       <FilterTabs activeFilter={activeFilter} onFilterChange={handleFilterChange} />
       <View style={styles.separator} />
       <SelectedItems items={products} />
-
-      {/* 저장하기 버튼 */}
-      <TouchableOpacity style={styles.saveButton} onPress={() => console.log('저장하기 눌림')}>
-        <Text style={styles.saveButtonText}>저장하기</Text>
-      </TouchableOpacity>
     </View>
   );
 };
@@ -176,20 +171,6 @@ const styles = StyleSheet.create({
     fontSize: 40,
     color: '#cccccc',
   },
-  saveButton: {
-    backgroundColor: '#f2f2f2', // 회색 배경
-    paddingVertical: 15,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginHorizontal: 16,
-    borderRadius: 8,
-    marginTop : 140,
-  },
-  saveButtonText: {
-    color: '#ffffff',
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
 });
 
-export default LikeEditScreen;
+export default LikeArchiveScreen;
