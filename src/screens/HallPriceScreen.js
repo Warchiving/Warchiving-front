@@ -118,7 +118,10 @@ const styles = StyleSheet.create({
     borderColor: '#FF7E7E',
   },
   hallPriceImg:{
-    width: 350, height: 125, 
+    width: 310, 
+    height: 125, 
+    resizeMode: 'contain',  // Maintain aspect ratio
+    alignSelf:'center',
     marginTop:100,
   },
   pinImg:{

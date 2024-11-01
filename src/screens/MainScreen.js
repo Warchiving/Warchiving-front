@@ -128,8 +128,8 @@ export default function MainScreen({ navigation }) {
           ))}
         </View>
 
-                        {/* 메이크업 추천 */}
-                        <View style={{ marginTop: 30 }}>
+        {/* 메이크업 추천 */}
+        <View style={{ marginTop: 30 }}>
           <Text style={{ marginLeft: 20, marginBottom: 10, fontWeight: '600' }}>
             <Text style={styles.HallText}>#추가_비용_없는</Text> 메이크업 샵
           </Text>
@@ -150,23 +150,23 @@ export default function MainScreen({ navigation }) {
         </View>
 
 
-                {/* 드레스 추천 */}
-                <View style={{ marginTop: 30 }}>
+        {/* 드레스 추천 */}
+        <View style={{ marginTop: 30 }}>
           <Text style={{ marginLeft: 20, marginBottom: 10, fontWeight: '600' }}>
             <Text style={styles.HallText}>#서비스가_좋은</Text> 드레스샵
           </Text>
           <ScrollView style={styles.Imglist} horizontal={true} showsHorizontalScrollIndicator={false}>
             {Hallimages2.map((img, index) => (
               <View key={index} style={[styles.imageWrapper, index === 0 && { marginLeft: 20 }]}>
-              {/* Main Image */}
-              <Image source={img} style={styles.Hallimage} />
+                {/* Main Image */}
+                <Image source={img} style={styles.Hallimage} />
 
-              {/* Icons overlay */}
-              <View style={styles.iconContainer}>
-                <Image source={require('../../assets/heart_icon.png')} style={styles.icon} />
-                <Image source={require('../../assets/bag_icon.png')} style={styles.icon} />
+                {/* Icons overlay */}
+                <View style={styles.iconContainer}>
+                  <Image source={require('../../assets/heart_icon.png')} style={styles.icon} />
+                  <Image source={require('../../assets/bag_icon.png')} style={styles.icon} />
+                </View>
               </View>
-            </View>
             ))}
           </ScrollView>
         </View>
@@ -210,7 +210,7 @@ const styles = StyleSheet.create({
   categoryImg: {
     width: 45,
     height: 45,
-    marginTop:10,
+    marginTop: 10,
   },
   MainLogo: {
     width: 50,
@@ -237,7 +237,7 @@ const styles = StyleSheet.create({
   categroyText: {
     marginTop: 15,
     fontWeight: 700,
-    fontWeight:'500'
+    fontWeight: '500'
   },
   Imglist: {
     flexDirection: 'row',
@@ -293,7 +293,7 @@ const styles = StyleSheet.create({
     width: 130,
     height: 150,
     borderRadius: 7,
-    marginRight:13,
+    marginRight: 13,
   },
   iconContainer: {
     position: 'absolute',
