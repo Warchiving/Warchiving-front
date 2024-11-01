@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet , FlatList} from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet , FlatList , ScrollView} from 'react-native';
 import colors from '../components/colors';
 import ProductCard from '../components/ProductCard';
 import ArchiveCard from '../components/ArchiveCard';
@@ -10,7 +10,7 @@ const ProductsScreen = () => {
   const [activeTab, setActiveTab] = useState('찜한 상품');
 
   return (
-    <View style={styles.tabContainer}>
+    < ScrollView style={styles.tabContainer}>
       <View style={[styles.bottomTabContainer, { flexDirection: 'row', justifyContent: 'flex-start' }]}>
         <TouchableOpacity
           style={[
@@ -48,7 +48,7 @@ const ProductsScreen = () => {
           <ArchiveList archives={archives} />
         </View>
       )}
-    </View>
+    </ ScrollView>
   );
 };
 
@@ -56,33 +56,83 @@ const ProductsScreen = () => {
 // 임시 데이터 (나중에 실제 데이터로 변경)
 const products = [
   {
-    title: '세모 메이크업',
-    price: 20000,
+    title: '르비르모어 선릉',
+    price: '11,000,000',
+    imageSource : require('../../assets/HallList/Hall6.png'),
     onHeartPress: () => console.log('찜하기 눌림'),
     onCartPress: () => console.log('장바구니 추가 눌림'),
     isFavorite: true,
   },
   {
-    title: '세모 메이크업',
-    price: 20000,
+    title: '소노펠리체컨벤션',
+    price: '8,000,000',
+    imageSource : require('../../assets/HallDetail/Detail18.png'),
     onHeartPress: () => console.log('찜하기 눌림'),
     onCartPress: () => console.log('장바구니 추가 눌림'),
     isFavorite: true,
   },
+  {
+    title: '메종디탈리',
+    price: '12,100,000',
+    imageSource : require('../../assets/HallDetail/Detail4.png'),
+    onHeartPress: () => console.log('찜하기 눌림'),
+    onCartPress: () => console.log('장바구니 추가 눌림'),
+    isFavorite: true,
+  },
+  {
+    title: '웨딩 메이크업',
+    price: '80,000',
+    imageSource : require('../../assets/makeup/makeup_img1.jpg'),
+    onHeartPress: () => console.log('찜하기 눌림'),
+    onCartPress: () => console.log('장바구니 추가 눌림'),
+    isFavorite: true,
+  },
+  {
+    title: '오늘',
+    price: '80,000',
+    imageSource : require('../../assets/makeup/makeup_img6.jpg'),
+    onHeartPress: () => console.log('찜하기 눌림'),
+    onCartPress: () => console.log('장바구니 추가 눌림'),
+    isFavorite: true,
+  },
+  {
+    title: '스튜디오 M',
+    price: '500,000',
+    imageSource : require('../../assets/studio/studio_img3.jpg'),
+    onHeartPress: () => console.log('찜하기 눌림'),
+    onCartPress: () => console.log('장바구니 추가 눌림'),
+    isFavorite: true,
+  },
+  {
+    title: '노블발렌티 대치점',
+    price: '9,500,000',
+    imageSource : require('../../assets/HallList/Hall4.png'),
+    onHeartPress: () => console.log('찜하기 눌림'),
+    onCartPress: () => console.log('장바구니 추가 눌림'),
+    isFavorite: true,
+  },
+
 ];
 
 const archives = [
   {
     id: '1',
     title: '내가 만든 견적',
-    date: '2024.09.02 최종 편집',
-    imageSrc: require('../../assets/arc_sample.png'),
+    date: '2024.10.28 최종 편집',
+    imageSrc: require('../../assets/HallDetail/Detail4.png'),
     onOptionsPress: () => console.log('옵션 버튼 눌림'),
   },
   {
     id: '2',
-    title: '내가 만든 견적',
-    date: '2024.09.02 최종 편집',
+    title: '우림언니 픽',
+    date: '2024.10.29 최종 편집',
+    imageSrc: require('../../assets/HallDetail/Detail19.png'),
+    onOptionsPress: () => console.log('옵션 버튼 눌림'),
+  },
+  {
+    id: '3',
+    title: '최종 견적',
+    date: '2024.10.31 최종 편집',
     imageSrc: require('../../assets/arc_sample.png'),
     onOptionsPress: () => console.log('옵션 버튼 눌림'),
   },
@@ -99,6 +149,7 @@ const ProductList = ({ products }) => {
           title={product.title}
           price={product.price}
           onHeartPress={product.onHeartPress}
+          imageSource={product.imageSource}
           onCartPress={product.onCartPress}
           isFavorite={product.isFavorite}
         />
@@ -107,7 +158,6 @@ const ProductList = ({ products }) => {
   );
 };
 
-// ArchiveList 컴포넌트
 const ArchiveList = ({ archives }) => {
   const navigation = useNavigation();
 
@@ -118,13 +168,12 @@ const ArchiveList = ({ archives }) => {
             title={archives.title}
             date={archives.date}
             imageSrc={archives.imageSrc}
-            onOptionsPress={() => navigation.navigate('LikeEdit')}
+            onOptionsPress={() => navigation.navigate('LikeArchive')}
           />
         ))}
     </View>
   );
 };
-
 
 const InfoScreen = () => (
   <View style={styles.content}>
