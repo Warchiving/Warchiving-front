@@ -9,7 +9,7 @@ import colors from '../components/colors';
 
 export default function HallPriceScreen({navigation}) {
 
-  const [priceRange, setPriceRange] = useState([200, 500]); // Initial range [minPrice, maxPrice]
+  const [priceRange, setPriceRange] = useState([180, 2000]); // Initial range [minPrice, maxPrice]
 
   const handleValueChange = (values) => {
     setPriceRange(values); // Update the range
@@ -43,8 +43,8 @@ export default function HallPriceScreen({navigation}) {
           values={[priceRange[0], priceRange[1]]}
           sliderLength={310}
           onValuesChange={handleValueChange}
-          min={200}
-          max={500}
+          min={180}
+          max={2000}
           step={1}
           selectedStyle={{ backgroundColor: colors.Pink900, height: 10 }} // Customize the selected range
           unselectedStyle={{ backgroundColor: '#EDEDED', height: 10 }}
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     color: '#FF7E7E',
   },
   markerContainer: {
-    width: 55,
+    width: 60,
     height: 30,
     alignItems: 'center',
     marginBottom: 20, // Adjust marker label position
@@ -118,7 +118,10 @@ const styles = StyleSheet.create({
     borderColor: '#FF7E7E',
   },
   hallPriceImg:{
-    width: 350, height: 125, 
+    width: 310, 
+    height: 125, 
+    resizeMode: 'contain',  // Maintain aspect ratio
+    alignSelf:'center',
     marginTop:100,
   },
   pinImg:{
