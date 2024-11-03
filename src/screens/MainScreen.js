@@ -16,11 +16,11 @@ export default function MainScreen({ navigation }) {
   };
 
   const categories = [
-    { image: require('../../assets/entire_icon.png'), text: '전체', screen: 'HallPrice' },
-    { image: require('../../assets/hall_icon.png'), text: '웨딩홀', screen: 'HallPrice' },
+    { image: require('../../assets/entire_icon.png'), text: '전체', screen: 'HallTags' },
+    { image: require('../../assets/hall_icon.png'), text: '웨딩홀', screen: 'HallTags' },
     { image: require('../../assets/studio_icon.png'), text: '스튜디오', screen: 'HallTags' },
-    { image: require('../../assets/makeup_icon.png'), text: '메이크업', screen: 'HallPrice' },
-    { image: require('../../assets/dress_icon.png'), text: '드레스', screen: 'HallPrice' },
+    { image: require('../../assets/makeup_icon.png'), text: '메이크업', screen: 'HallTags' },
+    { image: require('../../assets/dress_icon.png'), text: '드레스', screen: 'HallTags' },
   ];
 
   const Hallimages = [
