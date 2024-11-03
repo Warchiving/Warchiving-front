@@ -36,7 +36,7 @@ export default function HallLoadingScreen({ navigation }) {
             </View>
 
             {/* 설명 */}
-            <Text style={styles.titleText}> <Text style={styles.boldText}>오구님</Text>과 딱맞는</Text>
+            <Text style={styles.titleText}> <Text style={styles.boldText}>59min</Text>님과 딱맞는</Text>
             <Text style={styles.titleText}> 웨딩홀이 추천될거에요!</Text>
 
             {/* 이미지 */}
@@ -47,7 +47,7 @@ export default function HallLoadingScreen({ navigation }) {
             </View>
 
             {/* 하단 버튼 */}
-            <View style={{ alignItems: 'center', marginTop: 100, }}>
+            <View style={{ alignItems: 'center', marginTop: 90, }}>
                 <LoadingButton title="시작하기" onPress={() => navigation.navigate('HallList')} />
             </View>
 
@@ -75,9 +75,10 @@ const styles = StyleSheet.create({
         marginTop:-80,
     },
     titleText: {
-        fontSize: 18,
+        fontSize: 20,
         color: '#333',
         fontWeight:'500',
+        marginTop:5,
     },
     boldText: {
         fontWeight: 'bold',

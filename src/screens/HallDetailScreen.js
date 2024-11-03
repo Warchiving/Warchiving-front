@@ -32,7 +32,7 @@ export default function HallDetailScreen({ route, navigation }) {
     "웰컴드링크 제공 서비스",
   ];
 
-  const user_name = '오구밍'
+  const user_name = '59min'
 
   const [selectedCategory, setSelectedCategory] = useState('전체');
 
@@ -347,9 +347,9 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   point: {
-    fontSize: 16,
+    fontSize: 14,
     color: '#333',
-    marginVertical: 5,
+    marginVertical: 3,
   },
   picButtonContainer: {
     flexDirection: 'row',
@@ -358,12 +358,12 @@ const styles = StyleSheet.create({
     marginTop:20,
   },
   picButton: {
-    padding:10,
+    paddingHorizontal:12,
     paddingVertical: 8,
     marginHorizontal: 4,
     borderWidth: 1,
     borderColor: '#ccc',
-    borderRadius: 8,
+    borderRadius: 5,
     alignItems: 'center',
   },
   picButtonActive: {
